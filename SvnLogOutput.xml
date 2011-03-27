@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<log>
+  <logentry revision="855">
+    <author>leem</author>
+    <date>2011-01-14T15:39:26.715625Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL130HazardImageSelection.vb</path>
+    </paths>
+    <msg>Fix the hazard image selection equality implementation to ensure that identical images do actually compare equal, previously they was comparing false and showing the property text in bold 
+when opening the property browser for the first time on a term.</msg>
+  </logentry>
+  <logentry revision="854">
+    <author>leem</author>
+    <date>2011-01-14T15:01:55.265663Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL124HazardCategoryLibraryStrings.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL124HazardCategoryLibraryStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL125HazardCategoryTerm.vb</path>
+    </paths>
+    <msg>Fault: 52
+Add a validation check that an image has been set before allowing 
+any changes to be saved.</msg>
+  </logentry>
+  <logentry revision="853">
+    <author>leem</author>
+    <date>2011-01-14T14:58:58.940361Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLC022HazardCategoryImageBrowser.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL131HazardImagePropEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL124HazardCategoryLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL130HazardImageSelection.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category/SLL125HazardCategoryTerm.vb</path>
+    </paths>
+    <msg>Code tidy</msg>
+  </logentry>
+  <logentry revision="852">
+    <author>leem</author>
+    <date>2011-01-14T14:51:44.281018Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Non Working Dates/SLL093NonWorkingDatesLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Non Working Dates/SLL094NonWorkingDateTerm.vb</path>
+    </paths>
+    <msg>Correct the handing of marking a non-working dates term as the default to actually make it so what it's supposed to</msg>
+  </logentry>
+  <logentry revision="851">
+    <author>leem</author>
+    <date>2011-01-14T14:40:33.840286Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Non Working Dates/SLL093NonWorkingDatesLibrary.vb</path>
+    </paths>
+    <msg>Fault: 58
+Handle IS_DEFAULT_VALUE being NULL rather than crashing by treating 
+NULL as false when loading library data.</msg>
+  </logentry>
+  <logentry revision="850">
+    <author>leem</author>
+    <date>2011-01-14T14:30:37.096260Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Standard Comments/SLL069StdCommentTerm.vb</path>
+    </paths>
+    <msg>Fix a crash where the standard comments library wasn't using the correct type for the comment text in order to edit it.</msg>
+  </logentry>
+  <logentry revision="849">
+    <author>leem</author>
+    <date>2011-01-14T14:17:37.677740Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PVT003SelectComment.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI/SLU034SelectCommentUIPropertyEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Standard Comments/SLL069StdCommentTerm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL027ActivityTerm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PVT003SelectCommentDets.vb</path>
+    </paths>
+    <msg>Fault: 159
+Adjust PVT003SelectCommentDets and PVT003SelectComment to allow a 
+configurable max comment length to be specificed.
+
+Adjust calling code in sys libs for the event description in 
+activities and standard comments to pass in the desired max
+length for each.</msg>
+  </logentry>
+  <logentry revision="848">
+    <author>leem</author>
+    <date>2011-01-14T14:01:58.007190Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI/SLM001SysLibMainScreen.vb</path>
+    </paths>
+    <msg>Fault: 130
+Correct how the database connection details are shown in the status 
+bar to bring them in line with the .NET app standards</msg>
+  </logentry>
+  <logentry revision="847">
+    <author>leem</author>
+    <date>2011-01-14T13:56:16.152218Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI/SLM001SysLibMainScreen.vb</path>
+    </paths>
+    <msg>Fault: 129
+Don't enable the print toolbar button if the selected library has no terms.</msg>
+  </logentry>
+  <logentry revision="846">
+    <author>leem</author>
+    <date>2011-01-14T11:24:55.491247Z</date>
+    <paths>
+      <path kind="file" action="A">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/My Project/licenses.licx</path>
+    </paths>
+    <msg>Add missing file</msg>
+  </logentry>
+  <logentry revision="845">
+    <author>leem</author>
+    <date>2011-01-14T10:52:42.453340Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL112DoseColoursLibraryStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL114ColourPicker.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL112DoseColoursLibraryStrings.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL114ColourPicker.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL115ColourPropertyEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL114ColourPicker.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL112DoseColoursLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL113DoseColourTerm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/DosingLibrariesGroup.vbproj</path>
+    </paths>
+    <msg>Fault: 24
+Make the dose colours library backwards compatible with the VB6 version</msg>
+  </logentry>
+  <logentry revision="844">
+    <author>muhammadh</author>
+    <date>2011-01-13T18:40:39.812673Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListSampleOrder.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.Designer.vb</path>
+    </paths>
+    <msg>Some localisation work and code commenting.</msg>
+  </logentry>
+  <logentry revision="843">
+    <author>muhammadh</author>
+    <date>2011-01-13T18:00:28.918947Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PVU022ILSUltraCombo2.vb</path>
+    </paths>
+    <msg>Added some comment to the extension methods.</msg>
+  </logentry>
+  <logentry revision="842">
+    <author>muhammadh</author>
+    <date>2011-01-13T17:54:45.732046Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PVU022ILSUltraCombo2.vb</path>
+    </paths>
+    <msg>Added to extension methods to ILSUltraCombo2 for binding Enum to the control.</msg>
+  </logentry>
+  <logentry revision="841">
+    <author>muhammadh</author>
+    <date>2011-01-13T17:51:56.917620Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUtil/ProvantisUtil.vbproj</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUtil/GenericTypeExtensionsModule.vb</path>
+      <path kind="file" action="A">/Provantis9/trunk/Provantis.Net/ProvantisUtil/EnumTypeExtensionModule.vb</path>
+    </paths>
+    <msg>Added a new Class for Enum Types Extension methods.
+Added a Linq reference to the Util Project
+Add some new extension methods to the GenericTypeExtensionsModule.vb</msg>
+  </logentry>
+  <logentry revision="840">
+    <author>johnh</author>
+    <date>2011-01-13T17:30:57.874651Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/SamplesViewDataSet.xss</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/SamplesViewDataSet.xsd</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/SamplesGrid.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/SamplesViewDataSet.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/SamplesGrid.resx</path>
+    </paths>
+    <msg>Added new columns to the Samples View Dataset and Grid to combine Animal and QC Sample fields.
+</msg>
+  </logentry>
+  <logentry revision="839">
+    <author>johnh</author>
+    <date>2011-01-13T16:49:47.928414Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDatasetTest.vb</path>
+    </paths>
+    <msg>Added test method to create Work List with a QC.
+</msg>
+  </logentry>
+  <logentry revision="838">
+    <author>johnh</author>
+    <date>2011-01-13T16:49:24.744847Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/SamplesGrid.vb</path>
+    </paths>
+    <msg>Changed to ensure that Work List statuses are updated when data is entered in the grid.
+</msg>
+  </logentry>
+  <logentry revision="837">
+    <author>muhammadh</author>
+    <date>2011-01-13T16:23:44.509996Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+    </paths>
+    <msg>Fix the compile error.</msg>
+  </logentry>
+  <logentry revision="836">
+    <author>muhammadh</author>
+    <date>2011-01-13T16:10:07.435100Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListSampleOrder.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011RequestOrderOptions.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListInstrPositionDataSet.xss</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListInstrPositionDataSet.xsd</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDatasetTest.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListInstrPositionDataSet.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListInstrPositionDataSet.vb</path>
+    </paths>
+    <msg>Some more updates to the Create Work List.
+Updated the algorithm for work list position algorithm to take the initial instrument position.
+Made some changes to CreateWorklist method and WorkListInstrPositionDataSet to deal with the selected and unselected QC Lots.
+Some other changes that i can't recall and still to do some preference stuff as it finishes off.
+</msg>
+  </logentry>
+  <logentry revision="835">
+    <author>matthewk</author>
+    <date>2011-01-13T15:19:28.296145Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPM001ClinPathMainScreen.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/Preferences.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/CPPreferences.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL/TestProvantisBLL/TestPreferences.vb</path>
+    </paths>
+    <msg>Removed the Gernal Akarbar "Its a Tarp" ascii art from the CPPreferences file (the rows being written to the Audit table where just writing the SYS_VALUE and not oging up the preference tree).
+</msg>
+  </logentry>
+  <logentry revision="834">
+    <author>leem</author>
+    <date>2011-01-13T11:52:13.245002Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibraryStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL040SampleAnalysisProperties.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibraryStrings.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLC011GenResActivityDetailsUI.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL027ActivityTerm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL037GenResActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL034DefaultGenResActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PVU034Activity.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL028ActivityConstants.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL039SampleAnalysisActivityDetails.vb</path>
+    </paths>
+    <msg>Fault: 165
+Implement the Batch Sample Collection Activity activity measurement type.</msg>
+  </logentry>
+  <logentry revision="833">
+    <author>leem</author>
+    <date>2011-01-13T10:57:29.240090Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibrary.vb</path>
+    </paths>
+    <msg>Order the activity measurement type list in alphabetical order</msg>
+  </logentry>
+  <logentry revision="832">
+    <author>leem</author>
+    <date>2011-01-13T10:54:54.866572Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL027ActivityTerm.vb</path>
+    </paths>
+    <msg>Remove commented out code</msg>
+  </logentry>
+  <logentry revision="831">
+    <author>leem</author>
+    <date>2011-01-13T10:10:45.784896Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL027ActivityTerm.vb</path>
+    </paths>
+    <msg>Fault: 168
+For sample analysis master activities, calculate the value for
+the number of tubes based on the selected child activities but allow
+it to be overridden if required</msg>
+  </logentry>
+  <logentry revision="830">
+    <author>leem</author>
+    <date>2011-01-13T10:00:22.212025Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL040SampleAnalysisProperties.vb</path>
+    </paths>
+    <msg>Fault: 169
+Allow the Quantity property to be editable for master activities so 
+the calculated value can be overridden by the user</msg>
+  </logentry>
+  <logentry revision="829">
+    <author>leem</author>
+    <date>2011-01-13T09:56:25.869825Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL040SampleAnalysisProperties.vb</path>
+    </paths>
+    <msg>Contrary to the comment, ANALYSIS_SAMPLE_TYPE_ID can indeed be null so handle it </msg>
+  </logentry>
+  <logentry revision="828">
+    <author>leem</author>
+    <date>2011-01-13T09:41:10.674642Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/ProvantisBLL.vbproj</path>
+    </paths>
+    <msg>This shouldn't have been committed</msg>
+  </logentry>
+  <logentry revision="827">
+    <author>leem</author>
+    <date>2011-01-13T09:38:43.449732Z</date>
+    <paths>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/ASTMDatalink</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/InterfaceImpExp/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL/TestProvantisBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/HostSpec79Datalink</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup/Clin Ob Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceConfiguration</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/BasicFraming</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesApp</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Implant Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/HostSpec79ParserConfigurer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/HostSpec79Parser</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/CustomFieldParser/CustomFieldParserPluginInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceSettings/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Interfaces</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestClinPathBLL/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MetadataEditor/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceConfiguration/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinicalPathologyGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/SerialCommsLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/PalpMassesGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatasetViewer/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Pregnancy Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceMetaData/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathIBLLPlugin/AnalystDemogExtPlugin</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceBridge</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL/SQL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/General Resources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Account Codes</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/LogViewer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MetadataEditor/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Study Status</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceConfiguration/Graphics</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Hazard Category</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Standard Lookups</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/ASTMConfigurer/Schemas</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisCalcUtil/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup/Tick Sheets</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DemographicExtension/AnalystDemogExtPlugin/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathSolution</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Summary Calculation</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePluginLibrary</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/FImpExpProtocol</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUtil/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Project Statuses</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup/Body Systems</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/SettingsTool</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/Advia120QCRangeImport/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/DataLinkCommsBase</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/DataLinkLayerInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUtils/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/GraphicsFiles</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/PalpMassesGroup/Mass Locations</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/CommsLayerInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper/DataMapper/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/FileImpExpDatalink/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestsAndProject/TestsAndProject/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/ASTMConfigurer/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Timeslots</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ProtocolSkeletonMaintGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Priority Categories</path>
+      <path kind="dir" action="M">/Provantis9/trunk</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/CustomFieldParser</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/CommsLayerInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/ASTMConfigurer/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/Dataset/Provantis</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MetadataEditor</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/CustomFieldParser/CustomFieldParserPlugins/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ProtocolSkeletonMaintGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DemographicExtension/DemogExtPluginInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Examination Sets</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper/DataMapper</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/Documentation</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/LogViewer/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Documentation</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/ASTMSequenceFraming/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinicalPathologyGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisCalcUtil</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/Instrument Interface Datasets</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Help Files</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/Dataset</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MapperConfigurer/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/Dataset/WorkOrders</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/Documentation</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/ObservationsClassification</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Locations</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/ASTMDatalink/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceSolution</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/LogViewer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Vehicles and Solvents</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/ASTMSequenceFraming</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/BasicFraming/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/HostSpec79ProtocolLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/LogViewer/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/FramingInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUtils</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/Advia120QCRangeImport</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/DataLinkLayerInterface</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/ProvantisBLL.vbproj</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/TCPCommsLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/DataParserInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/HostSpec79Parser/Schemas</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathIBLLPlugin/DemogExtPluginInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePluginLibrary/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/FramingInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/PalpMassesGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/IProtocolLayer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesSolution</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DemographicExtension/AnalystDemogExtPlugin</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathIBLLPlugin</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/ASTMParser</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUtil</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Cage Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/ASTMProtocolBase</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/InterfaceToolsSolution</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/DataLinkCommsBase/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Group Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Examination Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/ASTMParser/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatasetViewer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/HostSpec79ParserConfigurer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/HostSpec79Parser/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Study Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/Documentation</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/ASTMProtocolBase/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Units</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestsAndProject/TestsAndProject</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/FileImpExpDatalink</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/TestProtocol</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceSettings</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/FImpExpProtocol/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/ProvantisButton</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinObsGroup/Symptoms</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/TestProtocol/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/SettingsTool/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper/DataMapperInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/CustomFieldParser/CustomFieldParserPlugins</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUtil</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestsAndProject</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/InterfaceImpExp</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper/DataMapper/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/ASTMConfigurer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/ProtocolBase</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUtil/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/HostSpec79ProtocolLayer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/SerialCommsLayer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/ClinicalPathologyGroup/Other Sub Category Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatasetViewer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/DataParserInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/CommsLayer/TCPCommsLayer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathIBLLPlugin/AnalystDemogExtPlugin/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceBridge/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MapperConfigurer</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Species and Strains</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisSolution</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Measurements</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/IProtocolLayer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/Documentation/Help</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/Documentation/Help</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesApp/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Graphics</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceUI/InterfaceConfiguration/My Project/backup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Admin Routes</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/Documentation/Help</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Data Flags</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/Dataset/Cobas 6000</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/HostSpec79Framing</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/FoetalPathologyGroup/Classifications</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Standard Comments</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestClinPathBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/ASTMConfigurer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer/ProtocolBase/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Test Articles</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Non Working Dates</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DemographicExtension/DemogExtPluginInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/Framing/HostSpec79Framing/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/Advia120QCRangeImport/Schemas</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/InterfaceImpExp/My Project/DataSources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DemographicExtension</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL/TestProvantisBLL/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataLinkLayer/HostSpec79Datalink/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceMetaData</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathIBLLPlugin/DemogExtPluginInterface</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Therap</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Instruments</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/MapperConfigurer/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Instrument Types</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataParser/CustomFieldParser/CustomFieldParserPluginInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/DataMapper/DataMapperInterface/My Project</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup</path>
+      <path kind="dir" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralLibrariesGroup/Diseases</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfaceTools/DatalinkTestHarness/Dataset/Advia2120</path>
+      <path kind="dir" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/Resources</path>
+      <path kind="dir" action="M">/Provantis9/trunk/Interface/InterfacePlugin/ProtocolLayer</path>
+    </paths>
+    <msg>add bugtraq:append to insert the fault number line at the top of commit logs rather than the bottom as requested by Steve H</msg>
+  </logentry>
+  <logentry revision="826">
+    <author>leem</author>
+    <date>2011-01-13T09:29:11.659720Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibraryStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibraryStrings.Designer.vb</path>
+    </paths>
+    <msg>Rename Clinical Pathology and Clinical Pathology
+Sample Collection activity measurement types to 
+Sample Analysis and Sample Collection Activity
+Fault: 166
+</msg>
+  </logentry>
+  <logentry revision="825">
+    <author>leem</author>
+    <date>2011-01-13T09:25:11.381822Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL036FoodWaterActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLC009DefaultInstrumentSelection.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL035DefaultInstrumentPropertyEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL026ActivitiesLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLC010FoodWaterActivityDetailsUI.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL040SampleAnalysisProperties.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL032ActivityTermValues.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL033ClinObsProperties.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL029ActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL038ReproProperties.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL037GenResActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL030ActivityDetailsPropertyEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL134ActivityEffortEditor.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL034DefaultGenResActivityDetails.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLC009DefaultInstrumentSelection.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLC009DefaultInstrumentSelection.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL031ActivityTermResources.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Activities/SLL039SampleAnalysisActivityDetails.vb</path>
+    </paths>
+    <msg>Code tidy up</msg>
+  </logentry>
+  <logentry revision="824">
+    <author>leem</author>
+    <date>2011-01-13T09:08:31.444011Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL112DoseColoursLibrary.vb</path>
+    </paths>
+    <msg>Revert accidental change that got committed</msg>
+  </logentry>
+  <logentry revision="823">
+    <author>leem</author>
+    <date>2011-01-13T09:07:49.623459Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Measurements/SLL043MeasurementsLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Measurements/SLL044MeasurementTerm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Measurements/SLL044MeasurementTermStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/DosingLibrariesGroup/Dose Colours/SLL112DoseColoursLibrary.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/Libraries/GeneralisedParamsGroup/Measurements/SLL044MeasurementTermStrings.Designer.vb</path>
+    </paths>
+    <msg>Implement the correct validation for messages to allow 
+duplicated descriptions, abbreviations, row descriptions
+and column one/two with other measurements as long as
+those measurements are not at the same level.
+Fault: 74
+</msg>
+  </logentry>
+  <logentry revision="822">
+    <author>leem</author>
+    <date>2011-01-13T09:06:02.338121Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesUI/SLC005ValidationMessages.vb</path>
+    </paths>
+    <msg>Offset the image's Y position by the Y position of the element being drawn so that if the image is not on the first row, 
+it'll still be drawn correctly.</msg>
+  </logentry>
+  <logentry revision="821">
+    <author>johnh</author>
+    <date>2011-01-12T17:58:23.226809Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+    </paths>
+    <msg>Added methods to update statuses associated with a result.
+</msg>
+  </logentry>
+  <logentry revision="820">
+    <author>matthewk</author>
+    <date>2011-01-12T17:19:39.034785Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/Preferences.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PreferenceControl.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL/TestProvantisBLL/TestPreferences.vb</path>
+    </paths>
+    <msg>Decoy commit in an attempt to make it look like lots is getting done (REC_USER wasnt getting populated properly).
+</msg>
+  </logentry>
+  <logentry revision="819">
+    <author>matthewk</author>
+    <date>2011-01-12T16:34:01.688675Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/Preferences.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PreferenceForm.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPathTests/TestProvantisBLL/TestProvantisBLL/TestPreferences.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.xss</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.xsd</path>
+    </paths>
+    <msg>Couple more audit thingys, also it wasnt possible to save user preferences.
+</msg>
+  </logentry>
+  <logentry revision="818">
+    <author>RobK</author>
+    <date>2011-01-12T16:31:30.451206Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/InstrumentInterface.vb</path>
+    </paths>
+    <msg>more sample matching stuff</msg>
+  </logentry>
+  <logentry revision="817">
+    <author>leem</author>
+    <date>2011-01-12T15:24:33.555193Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL/SLU007SystemLibraryTermBase.vb</path>
+    </paths>
+    <msg>When checking for duplicate _DESCR fields, only check the current language, not all languages that may be in the table.</msg>
+  </logentry>
+  <logentry revision="816">
+    <author>RobK</author>
+    <date>2011-01-12T15:23:21.060952Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+    </paths>
+    <msg>Added new method GetCurrentSelectedSample (currently does nothing) to return
+the current selected worklist sample used in Userselection (cursor/barcode) mode.
+</msg>
+  </logentry>
+  <logentry revision="815">
+    <author>matthewk</author>
+    <date>2011-01-12T15:22:57.296781Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PreferenceForm.vb</path>
+    </paths>
+    <msg>ValueChanged event handler was only picking up changes on the instruments tab.
+</msg>
+  </logentry>
+  <logentry revision="814">
+    <author>RobK</author>
+    <date>2011-01-12T15:21:12.726416Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/InstrumentInterface.vb</path>
+    </paths>
+    <msg>continued mods to sample matching at all levels
+</msg>
+  </logentry>
+  <logentry revision="813">
+    <author>leem</author>
+    <date>2011-01-12T15:09:09.526505Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL/SLU007SystemLibraryTermBase.vb</path>
+    </paths>
+    <msg>Break up CheckForDuplicates into a series of overridable methods for each property to allow libraries to implement different variations</msg>
+  </logentry>
+  <logentry revision="812">
+    <author>matthewk</author>
+    <date>2011-01-12T14:59:53.867507Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisUI/PreferenceControl.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.xss</path>
+      <path kind="file" action="M">/Provantis9/trunk/Provantis.Net/ProvantisBLL/PreferencesDataset.xsd</path>
+    </paths>
+    <msg>Audit stuff working for instrument values.
+</msg>
+  </logentry>
+  <logentry revision="811">
+    <author>leem</author>
+    <date>2011-01-12T14:41:44.481046Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/SystemLibraries.NET/SystemLibrariesBLL/SLU007SystemLibraryTermBase.vb</path>
+    </paths>
+    <msg>Make the common validation routines overridable</msg>
+  </logentry>
+  <logentry revision="810">
+    <author>muhammadh</author>
+    <date>2011-01-12T13:50:37.230557Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListSampleOrder.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011RequestOrderOptions.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkListStrings.Designer.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathUI/CPC011CreateWorkList.resx</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/QCDataSet.vb</path>
+    </paths>
+    <msg>Localisation updates for the Create Work List.</msg>
+  </logentry>
+  <logentry revision="809">
+    <author>RobK</author>
+    <date>2011-01-12T13:23:17.743089Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/InstrumentInterface.vb</path>
+    </paths>
+    <msg>ModiciaModifications for sample matching on other sample and some QC matching changes
+</msg>
+  </logentry>
+  <logentry revision="808">
+    <author>RobK</author>
+    <date>2011-01-12T13:21:39.121278Z</date>
+    <paths>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/WorkListDataSet.vb</path>
+      <path kind="file" action="M">/Provantis9/trunk/ClinPath/ClinPathBLL/InstrumentInterface.vb</path>
+    </paths>
+    <msg>Modifications for sample matching on other sample and some QC matching changes</msg>
+  </logentry>
+</log>
