@@ -21,7 +21,6 @@ Public Class Svn
         Public Property Message As String
         Public Property Faults As String
         Public Property Merge As Boolean
-
     End Class
 
     ''' <summary>
@@ -34,6 +33,47 @@ Public Class Svn
         mSvnPath = svnPath
         mTrunckPath = trunckPath
         mBranchPath = branchPath
+    End Sub
+
+    Public Function GetRevisionRange(ByVal allRevisions As String(), ByVal selectedRevisions As String()) As String()
+        Dim Revisions As New List(Of String)
+
+        Dim RangeStart As String = String.Empty
+        Dim RangeEnd As String = String.Empty
+        Dim Jumps = 0
+        For position = 0 To selectedRevisions.Count - 1
+            If allRevisions(position + Jumps) = selectedRevisions(position) Then
+                If RangeStart = String.Empty Then
+                    RangeStart = selectedRevisions(position)
+                Else
+                    RangeEnd = selectedRevisions(position)
+                End If
+            End If
+
+            'Writing code like this makes me want to learn functional :<
+            If allRevisions(position + Jumps) <> selectedRevisions(position) Then
+                AddRange(RangeStart, RangeEnd, Revisions)
+
+                RangeStart = selectedRevisions(position)
+                RangeEnd = String.Empty
+                Jumps += 1
+            End If
+
+            If position = selectedRevisions.Count - 1 Then
+                AddRange(RangeStart, RangeEnd, Revisions)
+            End If
+        Next
+
+        Return Revisions.ToArray
+    End Function
+
+
+    Private Sub AddRange(ByVal rangeStart As String, ByVal rangeEnd As String, ByVal revisions As List(Of String))
+        If RangeEnd = String.Empty Then
+            Revisions.Add(RangeStart)
+        Else
+            Revisions.Add(RangeStart + ":" + RangeEnd)
+        End If
     End Sub
 
     ''' <summary>

@@ -46,7 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestSvnLog.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SvnDomainModel\SvnDomainModel.vbproj">
+      <Project>{AAB62A7A-D2F6-42BB-BDD3-2589C4D9029A}</Project>
+      <Name>SvnDomainModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
