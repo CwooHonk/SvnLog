@@ -13,81 +13,15 @@ Public Class Svn
     ''' A class to store the individual changes return by the svn log command.
     ''' </summary>
     Public Class LogEntry
-        Private mRevision As Integer
-        Private mAuthor As String
-        Private mDate As Date
-        Private mPaths As String
-        Private mAllPaths As New List(Of String)
-        Private mMessage As String
-        Private mFaults As String
-        Private mMerge As Boolean
+        Public Property Revision As Integer
+        Public Property Author As String
+        Public Property ChangeDate As Date
+        Public Property Paths As String
+        Public Property AllPaths As New List(Of String)
+        Public Property Message As String
+        Public Property Faults As String
+        Public Property Merge As Boolean
 
-#Region "LogEntry Public Properties"
-        Public Property Revision() As Integer
-            Get
-                Return mRevision
-            End Get
-            Set(ByVal value As Integer)
-                mRevision = value
-            End Set
-        End Property
-        Public Property Merge() As Boolean
-            Get
-                Return mMerge
-            End Get
-            Set(ByVal value As Boolean)
-                mMerge = value
-            End Set
-        End Property
-        Public Property Faults() As String
-            Get
-                Return mFaults
-            End Get
-            Set(ByVal value As String)
-                mFaults = value
-            End Set
-        End Property
-        Public Property Author() As String
-            Get
-                Return mAuthor
-            End Get
-            Set(ByVal value As String)
-                mAuthor = value
-            End Set
-        End Property
-        Public Property ChangeDate() As String
-            Get
-                Return mDate
-            End Get
-            Set(ByVal value As String)
-                mDate = value
-            End Set
-        End Property
-        Public Property Paths() As String
-            Get
-                Return mPaths
-            End Get
-            Set(ByVal value As String)
-                mPaths = value
-            End Set
-        End Property
-        Public Property AllPaths() As List(Of String)
-            Get
-                Return mAllPaths
-            End Get
-            Set(ByVal value As List(Of String))
-                mAllPaths = value
-            End Set
-        End Property
-        Public Property Message() As String
-            Get
-                Return mMessage
-            End Get
-            Set(ByVal value As String)
-                mMessage = value
-            End Set
-        End Property
-#End Region
     End Class
 
     ''' <summary>
