@@ -35,6 +35,13 @@ Public Class Svn
         mBranchPath = branchPath
     End Sub
 
+    ''' <summary>
+    ''' Given a list of all possible revisions to select, and the revisions that have been selected creates a set of revisions
+    ''' ranges that can be passed to a merge command.
+    ''' </summary>
+    ''' <param name="allRevisions">All the revisions that can be selected.</param>
+    ''' <param name="selectedRevisions">All the revisions that the user has selected.</param>
+    ''' <returns>Returns an array of revisions ranges that represents the given selected revisions.</returns>
     Public Function GetRevisionRange(ByVal allRevisions As String(), ByVal selectedRevisions As String()) As String()
         Dim Revisions As New List(Of String)
 
@@ -67,7 +74,12 @@ Public Class Svn
         Return Revisions.ToArray
     End Function
 
-
+    ''' <summary>
+    ''' A given revisions, or a revision range, to a list of revisions.
+    ''' </summary>
+    ''' <param name="rangeStart">The revisions / start of revision range.</param>
+    ''' <param name="rangeEnd">The end of the revisions range.</param>
+    ''' <param name="revisions">The list of revisions this revisions / range will be added too.</param>
     Private Sub AddRange(ByVal rangeStart As String, ByVal rangeEnd As String, ByVal revisions As List(Of String))
         If RangeEnd = String.Empty Then
             Revisions.Add(RangeStart)
