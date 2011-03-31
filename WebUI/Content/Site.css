@@ -103,7 +103,7 @@ page width. Or, you can specify an exact pixel width. */
     padding: 5px 0;
     margin: 0;
     color: #fff;
-    border: none;
+    border:p/Repro/Trunck none;
     line-height: 2em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 32px !important;
@@ -125,6 +125,11 @@ page width. Or, you can specify an exact pixel width. */
     line-height: normal;
     margin: 0;
     font-size: .9em;
+}
+
+input.TitleBar
+{
+    width:92%;
 }
 
 /* FORM LAYOUT ELEMENTS   
@@ -157,12 +162,6 @@ legend
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
-}
-
-input[type="text"] 
-{
-    width: 200px;
-    border: 1px solid #CCC;
 }
 
 /* TABLE
