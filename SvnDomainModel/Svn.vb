@@ -1,6 +1,4 @@
-﻿Imports System.ComponentModel
-
-''' <summary>
+﻿''' <summary>
 ''' A class to query svn.
 ''' </summary>
 Public Class Svn
@@ -57,7 +55,6 @@ Public Class Svn
                 End If
             End If
 
-            'Writing code like this makes me want to learn functional :<
             If allRevisions(position + Jumps) <> selectedRevisions(position) Then
                 AddRange(RangeStart, RangeEnd, Revisions)
 
@@ -91,10 +88,10 @@ Public Class Svn
     ''' <summary>
     ''' Gets all the changes between the 2 branchs.
     ''' </summary>
-    Public Function GetChanges() As BindingList(Of LogEntry)
+    Public Function GetChanges() As List(Of LogEntry)
         Dim LogOutPut = GetSvnLogOutput()
 
-        Dim Logs As New BindingList(Of LogEntry)
+        Dim Logs As New List(Of LogEntry)
         For Each log In LogOutPut.Elements
             Dim entry As New LogEntry
             entry.Merge = True

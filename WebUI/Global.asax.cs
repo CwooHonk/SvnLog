@@ -26,6 +26,8 @@ namespace WebUI
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+
+            ModelBinders.Binders.Add(typeof(List<SvnDomainModel.Svn.LogEntry>), new LogModelBinder());
         }
     }
 }
