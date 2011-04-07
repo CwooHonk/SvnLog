@@ -13,6 +13,14 @@
             $(this).attr("checked", Checked);
         });
     }
+
+    function SetSelectedRevisions() {
+        var Revisions = [];
+        $("#SvnResults tbody tr td#Build input:checked").each(function (index) {
+            Revisions.push($(this).attr("id"));
+        });
+        $("#SelectedRevisions").attr("value", Revisions.join(", "));
+    }
 </script> 
 
     <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults" }))

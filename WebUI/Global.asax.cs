@@ -27,7 +27,7 @@ namespace WebUI
         {
             RegisterRoutes(RouteTable.Routes);
 
-            ModelBinders.Binders.Add(typeof(List<SvnDomainModel.Svn.LogEntry>), new LogModelBinder());
+            ModelBinders.Binders.Add(typeof(SvnDetails), new LogModelBinder());
         }
     }
 }

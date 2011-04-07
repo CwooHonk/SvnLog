@@ -14,8 +14,8 @@
     foreach (var log in Model)
         {%>
         <tbody>
-          <tr id = "<%= log.Revision %>">  
-            <td id="Build"><input type="checkbox" /></td>
+          <tr>  
+            <td id="Build"><input type="checkbox" id = "<%= log.Revision %>" /></td>
             <td><%= log.Revision %></td>
             <td><%= log.Author %></td>
             <td class="AutoSize"><%= log.Paths %></td>
@@ -28,11 +28,7 @@
          <% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "MergeForm" }))
         {
         %>
-            <input id="MergeSubmit" type="submit" value="Merge" />
-            <!-- Must be a better way of doing this.. :-( -->
-            <%= Html.Hidden("TrunckPath1") %>
-            <%= Html.Hidden("BranchPath1") %>
-            <%= Html.Hidden("FromRevision") %>
-            <%= Html.Hidden("ToRevision") %>
+            <input id="MergeSubmit" type="submit" value="Merge" onclick="SetSelectedRevisions()" />
+            <%= Html.Hidden("SelectedRevisions")%>
 
     <% } %>
