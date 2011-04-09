@@ -53,11 +53,19 @@ namespace WebUI.Controllers
             foreach (var Change in AllChanges)
                 svnDetails.Changes.Add(Change);
 
-            return PartialView("ViewUserControl", svnDetails.Changes.OrderByDescending(a => a.Revision).ToList());
+            svnDetails.BranchPhysicalLocation = Log.GetBranchLocation();
+
+            return PartialView("ViewUserControl", svnDetails.Changes.OrderByDescending(a => a.Revision));
         }
 
         public ActionResult MergeSvnFiles(SvnDetails svnDetails, string SelectedRevisions)
         {
+            var svnRepro = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
+            var revisions = SelectedRevisions.Split(',').OrderBy(x => int.Parse(x));
+            var RevisionRange = svnRepro.GetRevisionRange(svnDetails.Changes.Select(x => x.Revision.ToString()), revisions);
+
+            svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPhysicalLocation);
+
             return null;
         }
     }

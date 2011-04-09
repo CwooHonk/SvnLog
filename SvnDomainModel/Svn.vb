@@ -40,7 +40,7 @@ Public Class Svn
     ''' <param name="allRevisions">All the revisions that can be selected.</param>
     ''' <param name="selectedRevisions">All the revisions that the user has selected.</param>
     ''' <returns>Returns an array of revisions ranges that represents the given selected revisions.</returns>
-    Public Function GetRevisionRange(ByVal allRevisions As String(), ByVal selectedRevisions As String()) As String()
+    Public Function GetRevisionRange(ByVal allRevisions As IEnumerable(Of String), ByVal selectedRevisions As IEnumerable(Of String)) As String()
         Dim Revisions As New List(Of String)
 
         Dim RangeStart As String = String.Empty
@@ -113,20 +113,50 @@ Public Class Svn
     End Function
 
     ''' <summary>
+    ''' Gets the location on the harddrive of a repository.
+    ''' </summary>
+    Public Function GetBranchLocation() As String
+        Dim Location = String.Empty
+
+        Using p = CreateProcess("info " + mBranchPath + " --xml")
+            p.Start()
+            Dim BranchXml = XElement.Parse(p.StandardOutput.ReadToEnd)
+            Dim Reprository = BranchXml.Elements.First.Elements.Where(Function(node) node.Name = "repository").FirstOrDefault
+            Location = Reprository.Elements.Where(Function(node) node.Name = "root").FirstOrDefault.Value
+        End Using
+
+        Return Location
+    End Function
+
+
+    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchLocation As String)
+        Dim Revisions = String.Join(" ", revisionRange.Select(Function(x) "-r " + x).ToArray)
+
+        'Hmm...going to need to get the current working directory somehow.
+    End Sub
+
+    ''' <summary>
     ''' Runs the log command against the branch and trunck assigned when this class was created.
     ''' </summary>
     ''' <returns>Returns an XElement that contains all the changes between the revisions of the two branches.</returns>
     Private Function GetSvnLogOutput() As XElement
-        Dim p = CreateProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible")
-        p.Start()
+        Dim Output As XElement
+        Dim RevisionInfo As String
 
-        Dim MergableRevisions = p.StandardOutput.ReadToEnd.Replace(Environment.NewLine, " ").Split(" ")
-        Dim RevisionInfo = (From rev In MergableRevisions Select "-" + rev
-                            Take MergableRevisions.Count - 1).Aggregate(Function(revs, rev) revs + " " + rev)
+        Using p = CreateProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible")
+            p.Start()
 
-        p = CreateProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo)
-        p.Start()
-        Return XElement.Parse(p.StandardOutput.ReadToEnd)
+            Dim MergableRevisions = p.StandardOutput.ReadToEnd.Replace(Environment.NewLine, " ").Split(" ")
+            RevisionInfo = (From rev In MergableRevisions Select "-" + rev
+                                Take MergableRevisions.Count - 1).Aggregate(Function(revs, rev) revs + " " + rev)
+        End Using
+
+        Using p = CreateProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo)
+            p.Start()
+            Output = XElement.Parse(p.StandardOutput.ReadToEnd)
+        End Using
+
+        Return Output
     End Function
 
     ''' <summary>

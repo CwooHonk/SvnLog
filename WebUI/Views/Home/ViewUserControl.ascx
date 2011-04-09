@@ -1,9 +1,9 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<List<SvnDomainModel.Svn+LogEntry>>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<SvnDomainModel.Svn+LogEntry>>" %>
 
 <table id="SvnResults">
  <thead>
   <tr>
-   <th>Merge? </br><input id="SelectAll" type="checkbox" onclick="CheckAll()" /></th>       
+   <th>>Merge? <br /><input id="SelectAll" type="checkbox" onclick="CheckAll()" /></th>       
    <th>Revision</th>
    <th>Author</th>
    <th>Paths</th>

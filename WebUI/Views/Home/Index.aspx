@@ -19,7 +19,7 @@
         $("#SvnResults tbody tr td#Merge input:checked").each(function (index) {
             Revisions.push($(this).attr("id"));
         });
-        $("#SelectedRevisions").attr("value", Revisions.join(", "));
+        $("#SelectedRevisions").attr("value", Revisions.join(","));
     }
 </script> 
 
