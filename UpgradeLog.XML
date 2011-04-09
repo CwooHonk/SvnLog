@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SvnLog">
+</Property><Property Name="Solution File" Value="C:\Users\Cwoo\Desktop\SvnLog\SvnLog.sln">
+</Property><Property Name="Date" Value="20 March 2011">
+</Property><Property Name="Time" Value="16:21">
+</Property></Properties><Event ErrorLevel="0" Project="SvnDomainModel" Source="SvnDomainModel\SvnDomainModel.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SvnDomainModel" Source="SvnDomainModel\SvnDomainModel.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SvnLog" Source="SvnLog\SvnLog.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="SvnLog" Source="SvnLog\SvnLog.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WebUI" Source="WebUI\WebUI.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WebUI" Source="WebUI\WebUI.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SvnLog.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SvnLog.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="SvnDomainModel" Source="SvnDomainModel\SvnDomainModel.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="SvnLog" Source="SvnLog\SvnLog.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="WebUI" Source="WebUI\WebUI.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
