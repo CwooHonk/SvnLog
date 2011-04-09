@@ -22,6 +22,12 @@ namespace WebUI.Controllers
 
         public ActionResult Index(SvnDetails svnDetails, string Trunck, string Branch)
         {
+            if (!System.IO.File.Exists(mSvnExecutablePath))
+            {
+                ViewData["ErrorMessage"] = string.Format("SVN.exe could not be found at the following location: {0}. Check the location in the Web.Config.", mSvnExecutablePath);
+                return View("Error");
+            }
+
             svnDetails.TrunckPath = Trunck;
             svnDetails.BranchPath = Branch;
 
@@ -33,12 +39,6 @@ namespace WebUI.Controllers
 
         public ActionResult GetSvnLog(SvnDetails svnDetails, string TrunckPath, string BranchPath)
         {
-            //TODO: Put this somewhere at start up.
-            //if (!System.IO.File.Exists(mSvnExecutablePath))
-            //{
-            //    return string.Format("<div>Svn.exe could not be found at the specifiec location ({0}). Check the web.config.</div>", mSvnExecutablePath);
-            //}
-
             if (svnDetails.BranchPath == null)
             {
                 svnDetails.BranchPath = BranchPath;

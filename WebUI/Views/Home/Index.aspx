@@ -9,14 +9,14 @@
 <script type="text/javascript">
     function CheckAll() {
         var Checked = $("#SelectAll")[0].checked;
-        $("#SvnResults tbody tr td#Build input").each(function (index) {
+        $("#SvnResults tbody tr td#Merge input").each(function (index) {
             $(this).attr("checked", Checked);
         });
     }
 
     function SetSelectedRevisions() {
         var Revisions = [];
-        $("#SvnResults tbody tr td#Build input:checked").each(function (index) {
+        $("#SvnResults tbody tr td#Merge input:checked").each(function (index) {
             Revisions.push($(this).attr("id"));
         });
         $("#SelectedRevisions").attr("value", Revisions.join(", "));
