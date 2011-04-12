@@ -129,11 +129,25 @@ Public Class Svn
     End Function
 
 
-    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchLocation As String)
+    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchLocation As String, ByVal branchPath As String)
+        'TODO: Do I need branch location?
+        Dim CheckOutFolder = IO.Path.Combine(Environment.CurrentDirectory, IO.Path.GetRandomFileName)
+        CheckOut(branchPath, CheckOutFolder)
+
+
         Dim Revisions = String.Join(" ", revisionRange.Select(Function(x) "-r " + x).ToArray)
 
         'Hmm...going to need to get the current working directory somehow.
     End Sub
+
+    Private Sub CheckOut(ByVal branchPath As String, ByVal checkOutFolder As String)
+        'TODO: This will need testing, is this giving the correct hosting path?
+        'Also, how to log errors if its not?
+        Using p = CreateProcess("checkout " + branchPath + " " + checkOutFolder)
+            p.Start()
+        End Using
+    End Sub
+
 
     ''' <summary>
     ''' Runs the log command against the branch and trunck assigned when this class was created.

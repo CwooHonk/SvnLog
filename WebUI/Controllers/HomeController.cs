@@ -64,7 +64,7 @@ namespace WebUI.Controllers
             var revisions = SelectedRevisions.Split(',').OrderBy(x => int.Parse(x));
             var RevisionRange = svnRepro.GetRevisionRange(svnDetails.Changes.Select(x => x.Revision.ToString()), revisions);
 
-            svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPhysicalLocation);
+            svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPhysicalLocation, svnDetails.BranchPath);
 
             return null;
         }
