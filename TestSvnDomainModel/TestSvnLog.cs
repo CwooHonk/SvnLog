@@ -78,5 +78,13 @@ namespace TestSvnDomainModel
             Assert.AreEqual("r1:r2", Revisions[0]);
             Assert.AreEqual("r4:r5", Revisions[1]);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(Svn.SvnProcess.SvnException))]
+        public void TestSvnProncessThrowsAnErrorWhenTheStandardErrorLogHasSomthingInIt()
+        {
+            var proc = new Svn.SvnProcess("-asdf", "netstat");
+            proc.ExecuteCommand();
+        }
     }
 }

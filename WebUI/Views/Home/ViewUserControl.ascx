@@ -3,7 +3,7 @@
 <table id="SvnResults">
  <thead>
   <tr>
-   <th>>Merge? <br /><input id="SelectAll" type="checkbox" onclick="CheckAll()" /></th>       
+   <th>Merge? <br /><input id="SelectAll" type="checkbox" onclick="CheckAll()" /></th>       
    <th>Revision</th>
    <th>Author</th>
    <th>Paths</th>

@@ -118,9 +118,8 @@ Public Class Svn
     Public Function GetBranchLocation() As String
         Dim Location = String.Empty
 
-        Using p = CreateProcess("info " + mBranchPath + " --xml")
-            p.Start()
-            Dim BranchXml = XElement.Parse(p.StandardOutput.ReadToEnd)
+        Using p = New SvnProcess("info " + mBranchPath + " --xml", mSvnPath)
+            Dim BranchXml = XElement.Parse(p.ExecuteCommand)
             Dim Reprository = BranchXml.Elements.First.Elements.Where(Function(node) node.Name = "repository").FirstOrDefault
             Location = Reprository.Elements.Where(Function(node) node.Name = "root").FirstOrDefault.Value
         End Using
@@ -129,22 +128,39 @@ Public Class Svn
     End Function
 
 
-    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchLocation As String, ByVal branchPath As String)
+    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchPath As String, ByVal trunckPath As String)
         'TODO: Do I need branch location?
         Dim CheckOutFolder = IO.Path.Combine(Environment.CurrentDirectory, IO.Path.GetRandomFileName)
-        CheckOut(branchPath, CheckOutFolder)
-
-
         Dim Revisions = String.Join(" ", revisionRange.Select(Function(x) "-r " + x).ToArray)
 
-        'Hmm...going to need to get the current working directory somehow.
+        CheckOut(branchPath, CheckOutFolder)
+        Merge(trunckPath, CheckOutFolder, Revisions)
+        Commit()
+
+        IO.Directory.Delete(CheckOutFolder)
+    End Sub
+
+
+    Private Sub Merge(ByVal trunckPath As String, ByVal workingDirectory As String, ByVal revisions As String)
+
+        Using p = New SvnProcess("merge " + trunckPath + " " + revisions + " " + workingDirectory, mSvnPath)
+            p.ExecuteCommand()
+        End Using
+
+    End Sub
+
+
+    Private Sub Commit()
+        Using p = New SvnProcess("commit -m""Merge""", mSvnPath)
+            p.ExecuteCommand()
+        End Using
     End Sub
 
     Private Sub CheckOut(ByVal branchPath As String, ByVal checkOutFolder As String)
         'TODO: This will need testing, is this giving the correct hosting path?
         'Also, how to log errors if its not?
-        Using p = CreateProcess("checkout " + branchPath + " " + checkOutFolder)
-            p.Start()
+        Using p = New SvnProcess("checkout " + branchPath + " " + checkOutFolder, mSvnPath)
+            p.ExecuteCommand()
         End Using
     End Sub
 
@@ -157,38 +173,105 @@ Public Class Svn
         Dim Output As XElement
         Dim RevisionInfo As String
 
-        Using p = CreateProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible")
-            p.Start()
-
-            Dim MergableRevisions = p.StandardOutput.ReadToEnd.Replace(Environment.NewLine, " ").Split(" ")
+        Using p = New SvnProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible", mSvnPath)
+            Dim MergableRevisions = p.ExecuteCommand.Replace(Environment.NewLine, " ").Split(" ")
             RevisionInfo = (From rev In MergableRevisions Select "-" + rev
                                 Take MergableRevisions.Count - 1).Aggregate(Function(revs, rev) revs + " " + rev)
         End Using
 
-        Using p = CreateProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo)
-            p.Start()
-            Output = XElement.Parse(p.StandardOutput.ReadToEnd)
+        Using p = New SvnProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo, mSvnPath)
+            Output = XElement.Parse(p.ExecuteCommand)
         End Using
 
         Return Output
     End Function
 
     ''' <summary>
-    ''' Creates a process to run an svn command on.
+    ''' A class that creates a process to query svn.
     ''' </summary>
-    ''' <param name="arguments">Arguments to the command you wish to run.</param>
-    Private Function CreateProcess(ByVal arguments As String) As Process
-        Dim p As New Process
-        p.StartInfo.Arguments = arguments
-        p.StartInfo.FileName = mSvnPath
+    Public Class SvnProcess
+        Implements IDisposable
 
-        p.StartInfo.UseShellExecute = False
-        p.StartInfo.CreateNoWindow = True
-        p.StartInfo.RedirectStandardInput = True
-        p.StartInfo.RedirectStandardError = True
-        p.StartInfo.RedirectStandardOutput = True
+        Private mProcess As Process
 
-        Return p
-    End Function
+        ''' <summary>
+        ''' An exception assoiated to any svn errors.
+        ''' </summary>
+        Public Class SvnException
+            Inherits Exception
+
+            Public Property SvnError As String
+        End Class
+
+        ''' <summary>
+        ''' A creates a process that can be used to query svn.
+        ''' </summary>
+        ''' <param name="arguments">Query command.</param>
+        ''' <param name="svnPath">Path to the svn execeutable.</param>
+        Public Sub New(ByVal arguments As String, ByVal svnPath As String)
+            mProcess = New Process
+            With mProcess
+                .StartInfo.Arguments = arguments
+                .StartInfo.FileName = svnPath
+
+                .StartInfo.UseShellExecute = False
+                .StartInfo.CreateNoWindow = True
+                .StartInfo.RedirectStandardInput = True
+                .StartInfo.RedirectStandardError = True
+                .StartInfo.RedirectStandardOutput = True
+            End With
+        End Sub
+
+        ''' <summary>
+        ''' Executes the command.
+        ''' </summary>
+        ''' <returns>A string of the output generated by the svn command.</returns>
+        ''' <remarks>Raise an SvnExcetion if somthing bad happens.</remarks>
+        Public Function ExecuteCommand() As String
+            mProcess.Start()
+
+            Dim Output = mProcess.StandardOutput.ReadToEnd
+            Dim Errors = mProcess.StandardError.ReadToEnd
+
+            If Errors <> String.Empty Then
+                Throw New SvnException() With {.SvnError = Errors}
+            End If
+
+            Return Output
+        End Function
+
+#Region "IDisposable Support"
+        Private disposedValue As Boolean ' To detect redundant calls
+
+        ' IDisposable
+        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+            If Not Me.disposedValue Then
+                If disposing Then
+                    ' TODO: dispose managed state (managed objects).
+                End If
+
+                mProcess.Dispose()
+                ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
+                ' TODO: set large fields to null.
+            End If
+            Me.disposedValue = True
+        End Sub
+
+        ' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
+        'Protected Overrides Sub Finalize()
+        '    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+        '    Dispose(False)
+        '    MyBase.Finalize()
+        'End Sub
+
+        ' This code added by Visual Basic to correctly implement the disposable pattern.
+        Public Sub Dispose() Implements IDisposable.Dispose
+            ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+            Dispose(True)
+            GC.SuppressFinalize(Me)
+        End Sub
+#End Region
+
+    End Class
 
 End Class
