@@ -1,4 +1,8 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<SvnDomainModel.Svn+LogEntry>>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<SvnDetails>" %>
+
+<div id="ValidationSummary">
+    <% Html.RenderPartial("ValidationSummary"); %>
+</div>
 
 <table id="SvnResults">
  <thead>
@@ -11,7 +15,7 @@
   </tr>
  </thead>
     <%
-    foreach (var log in Model)
+    foreach (var log in Model.Changes.OrderByDescending(a=>a.Revision))
         {%>
         <tbody>
           <tr>  
@@ -25,7 +29,7 @@
      <% } %>
 </table>
 
-         <% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "MergeForm" }))
+         <% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "ValidationSummary" }))
         {
         %>
             <input id="MergeSubmit" type="submit" value="Merge" onclick="SetSelectedRevisions()" />

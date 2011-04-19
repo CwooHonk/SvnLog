@@ -55,7 +55,7 @@ namespace WebUI.Controllers
 
             svnDetails.BranchPhysicalLocation = Log.GetBranchLocation();
 
-            return PartialView("ViewUserControl", svnDetails.Changes.OrderByDescending(a => a.Revision));
+            return PartialView("ViewUserControl", svnDetails);
         }
 
         public ActionResult MergeSvnFiles(SvnDetails svnDetails, string SelectedRevisions)
@@ -70,8 +70,8 @@ namespace WebUI.Controllers
             }
             catch (Svn.SvnProcess.SvnException ex)
             {
-                ViewData["ErrorMessage"] = ex.SvnError;
-                return View("Error");
+                ModelState.AddModelError("", ex.SvnError);
+                return PartialView("ValidationSummary");
             }
 
             return null;
