@@ -20,6 +20,7 @@ namespace WebUI.Controllers
             mSvnExecutablePath = ConfigurationManager.AppSettings["SvnPath"];
         }
 
+        [HttpGet]
         public ActionResult Index(SvnDetails svnDetails, string Trunck, string Branch)
         {
             if (!System.IO.File.Exists(mSvnExecutablePath))
@@ -37,6 +38,7 @@ namespace WebUI.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult GetSvnLog(SvnDetails svnDetails, string TrunckPath, string BranchPath)
         {
             if (svnDetails.BranchPath == null)
@@ -53,11 +55,10 @@ namespace WebUI.Controllers
             foreach (var Change in AllChanges)
                 svnDetails.Changes.Add(Change);
 
-            svnDetails.BranchPhysicalLocation = Log.GetBranchLocation();
-
             return PartialView("ViewUserControl", svnDetails);
         }
 
+        [HttpPost]
         public ActionResult MergeSvnFiles(SvnDetails svnDetails, string SelectedRevisions)
         {
             var svnRepro = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
@@ -66,7 +67,7 @@ namespace WebUI.Controllers
 
             try
             {
-                svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPhysicalLocation, svnDetails.BranchPath);
+                svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPath, svnDetails.TrunckPath);
             }
             catch (Svn.SvnProcess.SvnException ex)
             {

@@ -1,4 +1,6 @@
-﻿''' <summary>
+﻿Imports System.IO
+
+''' <summary>
 ''' A class to query svn.
 ''' </summary>
 Public Class Svn
@@ -129,29 +131,27 @@ Public Class Svn
 
 
     Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchPath As String, ByVal trunckPath As String)
-        'TODO: Do I need branch location?
-        Dim CheckOutFolder = IO.Path.Combine(Environment.CurrentDirectory, IO.Path.GetRandomFileName)
+        Dim CheckOutFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetRandomFileName)
         Dim Revisions = String.Join(" ", revisionRange.Select(Function(x) "-r " + x).ToArray)
 
         CheckOut(branchPath, CheckOutFolder)
         Merge(trunckPath, CheckOutFolder, Revisions)
-        Commit()
+        Commit(CheckOutFolder)
 
-        IO.Directory.Delete(CheckOutFolder)
+        'TODO: This isnt deleting the folder.
+        Directory.Delete(CheckOutFolder, True)
     End Sub
 
 
     Private Sub Merge(ByVal trunckPath As String, ByVal workingDirectory As String, ByVal revisions As String)
-
         Using p = New SvnProcess("merge " + trunckPath + " " + revisions + " " + workingDirectory, mSvnPath)
             p.ExecuteCommand()
         End Using
-
     End Sub
 
 
-    Private Sub Commit()
-        Using p = New SvnProcess("commit -m""Merge""", mSvnPath)
+    Private Sub Commit(ByVal workingDirectory As String)
+        Using p = New SvnProcess("commit -m""Merge"" " + workingDirectory, mSvnPath)
             p.ExecuteCommand()
         End Using
     End Sub
@@ -163,7 +163,6 @@ Public Class Svn
             p.ExecuteCommand()
         End Using
     End Sub
-
 
     ''' <summary>
     ''' Runs the log command against the branch and trunck assigned when this class was created.

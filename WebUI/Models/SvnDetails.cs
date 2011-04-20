@@ -7,7 +7,6 @@ public class SvnDetails
     public List<Svn.LogEntry> Changes { get; set; }
     public string TrunckPath {get; set;}
     public string BranchPath { get; set; }
-    public string BranchPhysicalLocation { get; set; }
 
     public SvnDetails()
     {
