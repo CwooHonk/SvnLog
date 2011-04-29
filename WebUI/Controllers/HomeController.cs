@@ -55,7 +55,24 @@ namespace WebUI.Controllers
             foreach (var Change in AllChanges)
                 svnDetails.Changes.Add(Change);
 
+            SetLoadingImage();
+
             return PartialView("ViewUserControl", svnDetails);
+        }
+
+
+        private void SetLoadingImage()
+        {
+            var images = new List<string>();
+            foreach(var iamge in Directory.GetFiles(Server.MapPath(@"~\Content\LoadingImages")))
+            {
+                var imageFile = new FileInfo(iamge);
+                images.Add(imageFile.Name);
+            }
+
+            var rand = new Random();
+            var randNumber = rand.Next(0, images.Count()-1);
+            ViewData["LoadingImage"] = "/Content/LoadingImages/" + images[randNumber];
         }
 
         [HttpPost]
@@ -63,19 +80,21 @@ namespace WebUI.Controllers
         {
             var svnRepro = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
             var revisions = SelectedRevisions.Split(',').OrderBy(x => int.Parse(x));
-            var RevisionRange = svnRepro.GetRevisionRange(svnDetails.Changes.Select(x => x.Revision.ToString()), revisions);
 
             try
             {
-                svnRepro.MergeChanges(RevisionRange, svnDetails.BranchPath, svnDetails.TrunckPath);
+                svnRepro.MergeChanges(svnDetails, revisions);
             }
-            catch (Svn.SvnProcess.SvnException ex)
+            catch (SvnProcess.SvnException ex)
             {
                 ModelState.AddModelError("", ex.SvnError);
-                return PartialView("ValidationSummary");
+                ModelState.AddModelError("Running Command:", ex.Command);
             }
 
-            return null;
+            //Set the image so another one is shown if merge some other files.
+            SetLoadingImage();
+
+            return PartialView("ValidationSummary");
         }
     }
 }

@@ -80,11 +80,28 @@ namespace TestSvnDomainModel
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Svn.SvnProcess.SvnException))]
+        [ExpectedException(typeof(SvnProcess.SvnException))]
         public void TestSvnProncessThrowsAnErrorWhenTheStandardErrorLogHasSomthingInIt()
         {
-            var proc = new Svn.SvnProcess("-asdf", "netstat");
+            var proc = new SvnProcess("-asdf", "netstat");
             proc.ExecuteCommand();
+        }
+
+        [TestMethod]
+        public void TestWhenOnlySingleRevisionSelectedItGetsTurnedIntoRevisionRange()
+        {
+            var Revisions = mSvnLog.GetRevisionRange(new string[] { "r1", "r2", "r3" }, new string[] { "r1" });
+
+            Assert.AreEqual("r1:r1", Revisions[0]);
+        }
+
+        [TestMethod]
+        public void TestRangeCreatedWhenFirstRevisionSkipped()
+        {
+            var Revisions = mSvnLog.GetRevisionRange(new string[] { "r1", "r20", "r21", "r22"}, new string[] { "r20", "r21", "r22"});
+
+            Assert.AreEqual(1, Revisions.Count());
+            Assert.AreEqual("r20:r22", Revisions[0]);
         }
     }
 }

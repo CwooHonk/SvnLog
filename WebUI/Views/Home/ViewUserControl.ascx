@@ -1,4 +1,4 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<SvnDetails>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<SvnDomainModel.SvnDetails>" %>
 
 <div id="ValidationSummary">
     <% Html.RenderPartial("ValidationSummary"); %>
@@ -29,10 +29,10 @@
      <% } %>
 </table>
 
-         <% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "ValidationSummary" }))
-        {
-        %>
-            <input id="MergeSubmit" type="submit" value="Merge" onclick="SetSelectedRevisions()" />
-            <%= Html.Hidden("SelectedRevisions")%>
+<% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "ValidationSummary", OnBegin = "ShowLoadingWindow", OnSuccess = "CloseLoadingWindow" }))
+   { %>
 
-    <% } %>
+    <input id="MergeSubmit" type="submit" value="Merge" onclick="SetSelectedRevisions()" />
+    <%= Html.Hidden("SelectedRevisions")%>
+
+<% } %>

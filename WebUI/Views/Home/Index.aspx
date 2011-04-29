@@ -21,13 +21,35 @@
         });
         $("#SelectedRevisions").attr("value", Revisions.join(","));
     }
+
+    function ShowLoadingWindow() {
+        centerPopup();
+        loadPopup();
+    }
+
+    function CloseLoadingWindow() {
+        disablePopup();
+
+        if ($("div.validation-summary-errors").length == 0) {
+            RemoveMergedRevisions();
+        }
+    }
+
+    function RemoveMergedRevisions() {
+        $("#SvnResults tbody tr").filter(function () {
+            return $(this).find("td#Merge input").attr('checked') == true;
+        }).remove()
+    }
 </script> 
+
 
     <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults" }))
        { %>
+
         <p>Trunck Path: <%= Html.TextBox("TrunckPath", ViewData["TrunckPath"], new { @class="TitleBar"})%></p>
         <p>Branch Path: <%= Html.TextBox("BranchPath", ViewData["BranchPath"], new { @class="TitleBar" })%></p>
         <input type="submit" value="Go" />
+
     <% } %>
      
     <div id="SvnLogResults" style="border: 2px dotted red; padding:.5em">

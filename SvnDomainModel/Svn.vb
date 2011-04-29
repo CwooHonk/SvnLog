@@ -45,6 +45,11 @@ Public Class Svn
     Public Function GetRevisionRange(ByVal allRevisions As IEnumerable(Of String), ByVal selectedRevisions As IEnumerable(Of String)) As String()
         Dim Revisions As New List(Of String)
 
+        If selectedRevisions.Count = 1 Then
+            AddRange(selectedRevisions.First, selectedRevisions.First, Revisions)
+            Return Revisions.ToArray
+        End If
+
         Dim RangeStart As String = String.Empty
         Dim RangeEnd As String = String.Empty
         Dim Jumps = 0
@@ -80,10 +85,12 @@ Public Class Svn
     ''' <param name="rangeEnd">The end of the revisions range.</param>
     ''' <param name="revisions">The list of revisions this revisions / range will be added too.</param>
     Private Sub AddRange(ByVal rangeStart As String, ByVal rangeEnd As String, ByVal revisions As List(Of String))
-        If RangeEnd = String.Empty Then
-            Revisions.Add(RangeStart)
+        If rangeStart = String.Empty AndAlso rangeEnd = String.Empty Then Return
+
+        If rangeEnd = String.Empty Then
+            revisions.Add(rangeStart)
         Else
-            Revisions.Add(RangeStart + ":" + RangeEnd)
+            revisions.Add(rangeStart + ":" + rangeEnd)
         End If
     End Sub
 
@@ -130,16 +137,53 @@ Public Class Svn
     End Function
 
 
-    Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchPath As String, ByVal trunckPath As String)
+    'Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchPath As String, ByVal trunckPath As String)
+    Public Sub MergeChanges(ByVal svnDetails As SvnDetails, ByVal SelectedRevisions As IEnumerable(Of String))
         Dim CheckOutFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetRandomFileName)
-        Dim Revisions = String.Join(" ", revisionRange.Select(Function(x) "-r " + x).ToArray)
+        Dim RevisionRange = GetRevisionRange(svnDetails.Changes.Select(Function(x) x.Revision.ToString()), SelectedRevisions)
+        Dim Revisions = String.Join(" ", RevisionRange.Select(Function(x) "-r " + x).ToArray)
 
-        CheckOut(branchPath, CheckOutFolder)
-        Merge(trunckPath, CheckOutFolder, Revisions)
-        Commit(CheckOutFolder)
+        Try
+            CheckOut(svnDetails.BranchPath, CheckOutFolder)
+            Merge(svnDetails.TrunckPath, CheckOutFolder, Revisions)
+            Commit(CheckOutFolder)
+        Finally
+            RemoveMergedRevisionsFromDetails(svnDetails)
+            RemoveReadOnlyFromDirectory(CheckOutFolder)
+            Directory.Delete(CheckOutFolder, True)
+        End Try
+    End Sub
 
-        'TODO: This isnt deleting the folder.
-        Directory.Delete(CheckOutFolder, True)
+    ''' <summary>
+    ''' Removes all revisions that have been built from the changes list in the SvnDetails.Changes.
+    ''' </summary>
+    ''' <param name="svnDetails">The object you are removing revision info from.</param>
+    Private Sub RemoveMergedRevisionsFromDetails(ByVal svnDetails As SvnDetails)
+        Dim RevisionsToRemove = New List(Of Svn.LogEntry)
+        For Each Revision In SvnDetails.Changes
+            If Revision.Merge Then
+                RevisionsToRemove.Add(Revision)
+            End If
+        Next
+
+        For Each revision In RevisionsToRemove
+            svnDetails.Changes.Remove(revision)
+        Next
+    End Sub
+
+    Private Sub RemoveReadOnlyFromDirectory(ByVal checkOutFolder As String)
+        Dim Files = Directory.GetFiles(checkOutFolder)
+        For Each File In Files
+            Dim FileInfo As New FileInfo(File)
+            FileInfo.Attributes = FileAttributes.Normal
+        Next
+
+        Dim dirs = Directory.GetDirectories(checkOutFolder)
+        For Each Directory In dirs
+            Dim DirInfo As New DirectoryInfo(Directory)
+            DirInfo.Attributes = FileAttributes.Normal
+            RemoveReadOnlyFromDirectory(DirInfo.FullName)
+        Next
     End Sub
 
 
@@ -184,93 +228,4 @@ Public Class Svn
 
         Return Output
     End Function
-
-    ''' <summary>
-    ''' A class that creates a process to query svn.
-    ''' </summary>
-    Public Class SvnProcess
-        Implements IDisposable
-
-        Private mProcess As Process
-
-        ''' <summary>
-        ''' An exception assoiated to any svn errors.
-        ''' </summary>
-        Public Class SvnException
-            Inherits Exception
-
-            Public Property SvnError As String
-        End Class
-
-        ''' <summary>
-        ''' A creates a process that can be used to query svn.
-        ''' </summary>
-        ''' <param name="arguments">Query command.</param>
-        ''' <param name="svnPath">Path to the svn execeutable.</param>
-        Public Sub New(ByVal arguments As String, ByVal svnPath As String)
-            mProcess = New Process
-            With mProcess
-                .StartInfo.Arguments = arguments
-                .StartInfo.FileName = svnPath
-
-                .StartInfo.UseShellExecute = False
-                .StartInfo.CreateNoWindow = True
-                .StartInfo.RedirectStandardInput = True
-                .StartInfo.RedirectStandardError = True
-                .StartInfo.RedirectStandardOutput = True
-            End With
-        End Sub
-
-        ''' <summary>
-        ''' Executes the command.
-        ''' </summary>
-        ''' <returns>A string of the output generated by the svn command.</returns>
-        ''' <remarks>Raise an SvnExcetion if somthing bad happens.</remarks>
-        Public Function ExecuteCommand() As String
-            mProcess.Start()
-
-            Dim Output = mProcess.StandardOutput.ReadToEnd
-            Dim Errors = mProcess.StandardError.ReadToEnd
-
-            If Errors <> String.Empty Then
-                Throw New SvnException() With {.SvnError = Errors}
-            End If
-
-            Return Output
-        End Function
-
-#Region "IDisposable Support"
-        Private disposedValue As Boolean ' To detect redundant calls
-
-        ' IDisposable
-        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
-            If Not Me.disposedValue Then
-                If disposing Then
-                    ' TODO: dispose managed state (managed objects).
-                End If
-
-                mProcess.Dispose()
-                ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
-                ' TODO: set large fields to null.
-            End If
-            Me.disposedValue = True
-        End Sub
-
-        ' TODO: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
-        'Protected Overrides Sub Finalize()
-        '    ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-        '    Dispose(False)
-        '    MyBase.Finalize()
-        'End Sub
-
-        ' This code added by Visual Basic to correctly implement the disposable pattern.
-        Public Sub Dispose() Implements IDisposable.Dispose
-            ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-            Dispose(True)
-            GC.SuppressFinalize(Me)
-        End Sub
-#End Region
-
-    End Class
-
 End Class
