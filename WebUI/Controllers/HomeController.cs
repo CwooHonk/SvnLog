@@ -87,8 +87,9 @@ namespace WebUI.Controllers
             }
             catch (SvnProcess.SvnException ex)
             {
-                ModelState.AddModelError("", ex.SvnError);
-                ModelState.AddModelError("Running Command:", ex.Command);
+                foreach(var error in ex.SvnError)
+                    ModelState.AddModelError("", error);
+                ModelState.AddModelError("", ex.Command);
             }
 
             //Set the image so another one is shown if merge some other files.

@@ -103,5 +103,15 @@ namespace TestSvnDomainModel
             Assert.AreEqual(1, Revisions.Count());
             Assert.AreEqual("r20:r22", Revisions[0]);
         }
+
+        [TestMethod]
+        public void TestWeirdOneOneRangeAndThenOtherRnageMadeWhenSelectingAllButSecondRevision()
+        {
+            var Revisions = mSvnLog.GetRevisionRange(new string[] { "r1", "r20", "r21", "r22" }, new string[] { "r1", "r21", "r22" });
+
+            Assert.AreEqual(2, Revisions.Count());
+            Assert.AreEqual("r1:r1", Revisions[0]);
+            Assert.AreEqual("r20:r21", Revisions[1]);
+        }
     }
 }

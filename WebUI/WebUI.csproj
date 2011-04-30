@@ -77,7 +77,6 @@
     <Content Include="Content\LoadingImages\allyourbase.jpg" />
     <Content Include="Content\LoadingImages\CantExaplinThat.png" />
     <Content Include="Content\LoadingImages\fixyourbug.png" />
-    <Content Include="Content\LoadingImages\imgoingtomurder.jpg" />
     <Content Include="Content\LoadingImages\notsureif.png" />
     <Content Include="Content\LoadingImages\yuno.jpg" />
     <Content Include="Default.aspx" />

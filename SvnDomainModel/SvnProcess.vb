@@ -12,7 +12,7 @@ Public Class SvnProcess
     Public Class SvnException
         Inherits Exception
 
-        Public Property SvnError As String
+        Public Property SvnError As New List(Of String)
         Public Property Command As String
     End Class
 
@@ -44,16 +44,22 @@ Public Class SvnProcess
         mProcess.Start()
 
         'Conflicts ask for user input so dont read whole buuffer.
-        Dim Errors = mProcess.StandardError.ReadLine
-        If Errors <> String.Empty Then
+        Dim Errors = New List(Of String)
+        Dim ErrorLine = mProcess.StandardError.ReadLine
+        While ErrorLine <> String.Empty
+            Errors.Add(ErrorLine)
+            ErrorLine = mProcess.StandardError.ReadLine
+        End While
+
+        If Errors.Count > 0 Then
             Throw New SvnException() With {.SvnError = Errors, .Command = mProcess.StartInfo.Arguments}
         End If
 
         Dim Output = mProcess.StandardOutput.ReadToEnd
 
-        'Double check there arnt any other errors (not sure what other errors there might be other than conflicts...)
-        Errors = mProcess.StandardError.ReadToEnd
-        If Errors <> String.Empty Then
+        Dim [Error] = mProcess.StandardError.ReadToEnd 'Might still happen if completly invalid command
+        If [Error] <> String.Empty Then
+            Errors.Add([Error])
             Throw New SvnException() With {.SvnError = Errors, .Command = mProcess.StartInfo.Arguments}
         End If
 
