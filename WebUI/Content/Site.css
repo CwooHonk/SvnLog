@@ -38,6 +38,26 @@ p, ul
     line-height: 1.6em;
 }
 
+/* Changes table
+----------------------------------------------------------*/
+div.ChangesLoading
+{
+    border: 2px dotted grey;
+    padding:.5em;
+}
+
+div.MergeError
+{
+    border: 2px dotted red;
+    padding:.5em;
+}
+
+div.ChangesMerged
+{
+    border: 2px dotted green;
+    padding:.5em;
+}
+
 /* HEADINGS   
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6

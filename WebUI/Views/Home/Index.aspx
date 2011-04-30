@@ -32,6 +32,10 @@
 
         if ($("div.validation-summary-errors").length == 0) {
             RemoveMergedRevisions();
+            $("div#SvnLogResults").removeClass("MergeError").addClass("ChangesMerged");
+        }
+        else {
+            $("div#SvnLogResults").removeClass("ChangesMerged").addClass("MergeError");
         }
     }
 
@@ -52,7 +56,7 @@
 
     <% } %>
      
-    <div id="SvnLogResults" style="border: 2px dotted red; padding:.5em">
+    <div id="SvnLogResults" class="ChangesLoading">
         Results will appear here
     </div>
 
