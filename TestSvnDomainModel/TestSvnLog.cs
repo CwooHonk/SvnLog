@@ -56,8 +56,8 @@ namespace TestSvnDomainModel
             var Revisions = mSvnLog.GetRevisionRange(new string[] { "r1", "r2", "r3" }, new string[] { "r1", "r3" });
 
             Assert.AreEqual(2, Revisions.Count());
-            Assert.AreEqual("r1", Revisions[0]);
-            Assert.AreEqual("r3", Revisions[1]);
+            Assert.AreEqual("r1:r1", Revisions[0]);
+            Assert.AreEqual("r3:r3", Revisions[1]);
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace TestSvnDomainModel
 
             Assert.AreEqual(2, Revisions.Count());
             Assert.AreEqual("r1:r1", Revisions[0]);
-            Assert.AreEqual("r20:r21", Revisions[1]);
+            Assert.AreEqual("r21:r22", Revisions[1]);
         }
     }
 }

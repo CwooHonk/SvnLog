@@ -46,10 +46,13 @@ Public Class SvnProcess
         'Conflicts ask for user input so dont read whole buuffer.
         Dim Errors = New List(Of String)
         Dim ErrorLine = mProcess.StandardError.ReadLine
-        While ErrorLine <> String.Empty
-            Errors.Add(ErrorLine)
-            ErrorLine = mProcess.StandardError.ReadLine
-        End While
+        If ErrorLine <> String.Empty Then Errors.Add(ErrorLine)
+
+        If MoreErrorsToRead() Then
+            While (ErrorLine = mProcess.StandardError.ReadLine) <> String.Empty
+                Errors.Add(ErrorLine)
+            End While
+        End If
 
         If Errors.Count > 0 Then
             Throw New SvnException() With {.SvnError = Errors, .Command = mProcess.StartInfo.Arguments}
@@ -65,6 +68,18 @@ Public Class SvnProcess
 
         Return Output
     End Function
+
+
+    Private Function MoreErrorsToRead()
+        Try
+            'Conflicts wait for user input, invalid merge commands do not
+            Return mProcess.HasExited AndAlso Not mProcess.Responding
+        Catch ex As InvalidOperationException
+            'The process may close between the .HasExited and .Responding calls
+            Return False
+        End Try
+    End Function
+
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls

@@ -88,7 +88,7 @@ Public Class Svn
         If rangeStart = String.Empty AndAlso rangeEnd = String.Empty Then Return
 
         If rangeEnd = String.Empty Then
-            revisions.Add(rangeStart)
+            revisions.Add(rangeStart + ":" + rangeStart)
         Else
             revisions.Add(rangeStart + ":" + rangeEnd)
         End If
