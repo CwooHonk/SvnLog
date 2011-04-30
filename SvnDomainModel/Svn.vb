@@ -137,7 +137,6 @@ Public Class Svn
     End Function
 
 
-    'Public Sub MergeChanges(ByVal revisionRange As IEnumerable(Of String), ByVal branchPath As String, ByVal trunckPath As String)
     Public Sub MergeChanges(ByVal svnDetails As SvnDetails, ByVal SelectedRevisions As IEnumerable(Of String))
         Dim CheckOutFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetRandomFileName)
         Dim RevisionRange = GetRevisionRange(svnDetails.Changes.Select(Function(x) x.Revision.ToString()), SelectedRevisions)
@@ -147,8 +146,8 @@ Public Class Svn
             CheckOut(svnDetails.BranchPath, CheckOutFolder)
             Merge(svnDetails.TrunckPath, CheckOutFolder, Revisions)
             Commit(CheckOutFolder)
-        Finally
             RemoveMergedRevisionsFromDetails(svnDetails)
+        Finally
             RemoveReadOnlyFromDirectory(CheckOutFolder)
             Directory.Delete(CheckOutFolder, True)
         End Try
