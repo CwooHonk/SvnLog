@@ -57,7 +57,7 @@
     <% } %>
      
     <div id="SvnLogResults" class="ChangesLoading">
-        Results will appear here
+        <% Html.RenderPartial("ChangeResults"); %>
     </div>
 
 </asp:Content>

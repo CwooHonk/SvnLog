@@ -144,6 +144,19 @@ Public Class Svn
 
         Try
             CheckOut(svnDetails.BranchPath, CheckOutFolder)
+
+            'Dim Ranges As New SharpSvn.SvnMergeRangeCollection
+            'For Each revision In RevisionRange
+            '    Dim Split = revision.Split(":")
+            '    Dim first = Split(0).Split("r").Last
+
+            '    Ranges.Add(New SharpSvn.SvnMergeRange(CInt(first), CInt(Split(1)), True))
+            'Next
+
+            'Dim client As New SharpSvn.SvnClient
+            'client.CheckOut(New Uri(mBranchPath), CheckOutFolder)
+            'Dim Merged = client.Merge(CheckOutFolder, svnDetails.BranchPath, Ranges)
+
             Merge(svnDetails.TrunckPath, CheckOutFolder, Revisions)
             Commit(CheckOutFolder)
             RemoveMergedRevisionsFromDetails(svnDetails)

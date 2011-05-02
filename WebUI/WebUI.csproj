@@ -90,6 +90,7 @@
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\PopUp.js" />
+    <Content Include="Views\Home\ChangeResults.ascx" />
     <Content Include="Views\Home\Error.aspx" />
     <Content Include="Views\Home\ValidationSummary.ascx" />
     <Content Include="Web.config" />
@@ -134,7 +135,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4143</DevelopmentServerPort>
+          <DevelopmentServerPort>58709</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

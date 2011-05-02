@@ -41,14 +41,22 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult GetSvnLog(SvnDetails svnDetails, string TrunckPath, string BranchPath)
         {
-            if (svnDetails.BranchPath == null)
-            {
-                svnDetails.BranchPath = BranchPath;
-                svnDetails.TrunckPath = TrunckPath;
-            }
-
+            svnDetails.BranchPath = BranchPath;
+            svnDetails.TrunckPath = TrunckPath;
+          
             var Log = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
-            var AllChanges = Log.GetChanges();
+            var AllChanges = new List<Svn.LogEntry>();
+
+            try
+            {
+                AllChanges = Log.GetChanges();
+            }
+            catch (SvnProcess.SvnException ex)
+            {
+                foreach (var error in ex.SvnError)
+                    ModelState.AddModelError("", error);
+                ModelState.AddModelError("", ex.Command);
+            }
 
             //Add each log to the class we are going to pass between sessions so we can keep a list of all the posibile revisions (dont want to rely on the client supplying it)
             svnDetails.Changes.Clear();
