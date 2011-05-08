@@ -29,11 +29,26 @@ namespace WebUI.Controllers
                 return View("Error");
             }
 
+            var requestSvnCookie = Request.Cookies[SvnDetails.SvnCookieName];
+            if (requestSvnCookie == null || svnDetails.SvnUser == string.Empty)
+            {
+                Response.Redirect(@"Svn\SetDetails");
+            }
+            else
+            {
+                if (svnDetails.SvnUser == null)
+                {
+                    svnDetails.SvnUser = requestSvnCookie[SvnDetails.SvnCookieUserName];
+                    svnDetails.SvnPassword = requestSvnCookie[SvnDetails.SvnCookieUserPassword];
+                }
+            }
+
             svnDetails.TrunckPath = Trunck;
             svnDetails.BranchPath = Branch;
 
             ViewData["TrunckPath"] = Trunck;
             ViewData["BranchPath"] = Branch;
+            ViewData["SvnUser"] = svnDetails.SvnUser;
 
             return View();
         }
@@ -44,7 +59,7 @@ namespace WebUI.Controllers
             svnDetails.BranchPath = BranchPath;
             svnDetails.TrunckPath = TrunckPath;
           
-            var Log = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
+            var Log = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath, svnDetails.SvnUser, svnDetails.SvnPassword);
             var AllChanges = new List<Svn.LogEntry>();
 
             try
@@ -86,7 +101,7 @@ namespace WebUI.Controllers
         [HttpPost]
         public ActionResult MergeSvnFiles(SvnDetails svnDetails, string SelectedRevisions)
         {
-            var svnRepro = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath);
+            var svnRepro = new Svn(mSvnExecutablePath, svnDetails.TrunckPath, svnDetails.BranchPath, svnDetails.SvnUser, svnDetails.SvnPassword);
             var revisions = SelectedRevisions.Split(',').OrderBy(x => int.Parse(x));
 
             try

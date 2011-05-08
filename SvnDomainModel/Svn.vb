@@ -8,6 +8,8 @@ Public Class Svn
     Private mSvnPath As String
     Private mTrunckPath As String
     Private mBranchPath As String
+    Private mUserName As String
+    Private mPassword As String
 
     ''' <summary>
     ''' A class to store the individual changes return by the svn log command.
@@ -29,10 +31,13 @@ Public Class Svn
     ''' <param name="svnPath">Path to the SVN executable.</param>
     ''' <param name="trunckPath">Path to the trunck of  the repro.</param>
     ''' <param name="branchPath">Path to the branch in the repro.</param>
-    Public Sub New(ByVal svnPath As String, ByVal trunckPath As String, ByVal branchPath As String)
+    Public Sub New(ByVal svnPath As String, ByVal trunckPath As String, ByVal branchPath As String,
+                   ByVal userName As String, ByVal password As String)
         mSvnPath = svnPath
         mTrunckPath = trunckPath
         mBranchPath = branchPath
+        mUserName = userName
+        mPassword = password
     End Sub
 
     ''' <summary>
@@ -144,19 +149,6 @@ Public Class Svn
 
         Try
             CheckOut(svnDetails.BranchPath, CheckOutFolder)
-
-            'Dim Ranges As New SharpSvn.SvnMergeRangeCollection
-            'For Each revision In RevisionRange
-            '    Dim Split = revision.Split(":")
-            '    Dim first = Split(0).Split("r").Last
-
-            '    Ranges.Add(New SharpSvn.SvnMergeRange(CInt(first), CInt(Split(1)), True))
-            'Next
-
-            'Dim client As New SharpSvn.SvnClient
-            'client.CheckOut(New Uri(mBranchPath), CheckOutFolder)
-            'Dim Merged = client.Merge(CheckOutFolder, svnDetails.BranchPath, Ranges)
-
             Merge(svnDetails.TrunckPath, CheckOutFolder, Revisions)
             Commit(CheckOutFolder)
             RemoveMergedRevisionsFromDetails(svnDetails)
@@ -200,14 +192,14 @@ Public Class Svn
 
 
     Private Sub Merge(ByVal trunckPath As String, ByVal workingDirectory As String, ByVal revisions As String)
-        Using p = New SvnProcess("merge " + trunckPath + " " + revisions + " " + workingDirectory, mSvnPath)
+        Using p = New SvnProcess("merge " + trunckPath + " " + revisions + " " + workingDirectory + UserNameAndPassword(), mSvnPath)
             p.ExecuteCommand()
         End Using
     End Sub
 
 
     Private Sub Commit(ByVal workingDirectory As String)
-        Using p = New SvnProcess("commit -m""Merge"" " + workingDirectory, mSvnPath)
+        Using p = New SvnProcess("commit -m""Merge"" " + workingDirectory + UserNameAndPassword(), mSvnPath)
             p.ExecuteCommand()
         End Using
     End Sub
@@ -215,7 +207,7 @@ Public Class Svn
     Private Sub CheckOut(ByVal branchPath As String, ByVal checkOutFolder As String)
         'TODO: This will need testing, is this giving the correct hosting path?
         'Also, how to log errors if its not?
-        Using p = New SvnProcess("checkout " + branchPath + " " + checkOutFolder, mSvnPath)
+        Using p = New SvnProcess("checkout " + branchPath + " " + checkOutFolder + UserNameAndPassword(), mSvnPath)
             p.ExecuteCommand()
         End Using
     End Sub
@@ -228,7 +220,7 @@ Public Class Svn
         Dim Output As XElement
         Dim RevisionInfo As String
 
-        Using p = New SvnProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible", mSvnPath)
+        Using p = New SvnProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible" + UserNameAndPassword(), mSvnPath)
             Dim MergableRevisions = p.ExecuteCommand.Replace(Environment.NewLine, " ").Split(" ")
             RevisionInfo = (From rev In MergableRevisions Select "-" + rev
                                 Take MergableRevisions.Count - 1).Aggregate(Function(revs, rev) revs + " " + rev)
@@ -239,5 +231,9 @@ Public Class Svn
         End Using
 
         Return Output
+    End Function
+
+    Private Function UserNameAndPassword() As String
+        Return " --username " + mUserName + " --password " + mPassword
     End Function
 End Class

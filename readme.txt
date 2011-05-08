@@ -1,3 +1,5 @@
+[Stores SVN passwords as plain text in a cookie file. This tool is inteneded to help me automate some merging I have to do at work]
+
 A Web UI for showing revisions that can be merged between two SVN reprositorys and offering to merged selected revisions.
 Is running the following commands:
 

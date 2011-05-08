@@ -46,7 +46,6 @@
     }
 </script> 
 
-
     <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults" }))
        { %>
 

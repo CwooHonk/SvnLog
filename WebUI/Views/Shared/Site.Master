@@ -18,6 +18,9 @@
             <div id="title">
                 <h1>Thats a big newt!</h1>
             </div>
+
+            SvnUser: <%= Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName]%>  <a href="/Svn/SetDetails">change</a>
+
         </div>
 
         <div id="main">
@@ -26,6 +29,7 @@
             <div id="footer">
             </div>
         </div>
+
     </div>
 </body>
 </html>

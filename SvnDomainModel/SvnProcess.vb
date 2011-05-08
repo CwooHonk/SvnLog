@@ -72,8 +72,10 @@ Public Class SvnProcess
 
     Private Function MoreErrorsToRead()
         Try
+            If mProcess.HasExited Then Return False
+
             'Conflicts wait for user input, invalid merge commands do not
-            Return mProcess.HasExited AndAlso Not mProcess.Responding
+            Return Not mProcess.Responding
         Catch ex As InvalidOperationException
             'The process may close between the .HasExited and .Responding calls
             Return False

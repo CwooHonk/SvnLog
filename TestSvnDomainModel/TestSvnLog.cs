@@ -37,7 +37,7 @@ namespace TestSvnDomainModel
 
          [TestInitialize()]
          public void MyTestInitialize() {
-             mSvnLog = new Svn(string.Empty, string.Empty, string.Empty);
+             mSvnLog = new Svn(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
          }
         
 
