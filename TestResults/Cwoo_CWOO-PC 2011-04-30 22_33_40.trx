@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="6af70c21-2b1f-424f-8625-651566d5787a" name="Cwoo@CWOO-PC 2011-04-30 22:33:40" runUser="Cwoo-PC\Cwoo" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="49e49dd0-324f-478a-ab30-f3aeba0afd51">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Cwoo_CWOO-PC 2011-04-30 22_33_40">
+      <DeploymentItem filename="C:\Users\Cwoo\Desktop\SvnLog\SvnDomainModel\bin\Debug\SvnDomainModel.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-04-30T22:33:40.2543534+01:00" queuing="2011-04-30T22:33:40.2543534+01:00" start="2011-04-30T22:33:40.2699534+01:00" finish="2011-04-30T22:33:40.5195539+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="9" executed="9" passed="9" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestWhenOnlySingleRevisionSelectedItGetsTurnedIntoRevisionRange" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="0d9d8b1b-59be-4a84-e3f2-8936777bdcca">
+      <Execution id="b3df8e62-1de8-4b0c-9261-0fd2d829a267" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestWhenOnlySingleRevisionSelectedItGetsTurnedIntoRevisionRange" />
+    </UnitTest>
+    <UnitTest name="TestSkippingARevisionResultsInTwoNoneRangesBeingReturned" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="02aa3de2-b3c3-fefd-307e-ace23c0ad47e">
+      <Execution id="d3a3f89f-a450-4503-ba2f-4ed736374306" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestSkippingARevisionResultsInTwoNoneRangesBeingReturned" />
+    </UnitTest>
+    <UnitTest name="TestSkippingLastResultsInOneRange" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="3a48e302-ccc6-9204-2565-041adf457499">
+      <Execution id="1ad2ab34-5894-4bfb-9c98-6855482f9296" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestSkippingLastResultsInOneRange" />
+    </UnitTest>
+    <UnitTest name="TestNoStateIsSavedBetweenRevisionRangeCallsThatWouldCauseADifferentRangeToBeReturned" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="46370878-bbbc-0087-cd0a-9a2f9fd46cbc">
+      <Execution id="83237099-aa80-4f47-a531-703febe97bc9" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestNoStateIsSavedBetweenRevisionRangeCallsThatWouldCauseADifferentRangeToBeReturned" />
+    </UnitTest>
+    <UnitTest name="TestRangeCreatedWhenFirstRevisionSkipped" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="24a2b6e2-c4e7-6b1d-ad11-cdd2dbc84edb">
+      <Execution id="50c25169-c363-4b3d-b581-d75316715211" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestRangeCreatedWhenFirstRevisionSkipped" />
+    </UnitTest>
+    <UnitTest name="TestRevisionsReturnedAsASingleRangeIfEveryRevisionIsSelected" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="1070a7ed-f447-faef-1a6b-12e76ff1dda1">
+      <Execution id="f23e0cd6-9f83-42e3-825e-8fc9ffc753ce" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestRevisionsReturnedAsASingleRangeIfEveryRevisionIsSelected" />
+    </UnitTest>
+    <UnitTest name="TestSkippingMiddleCanCreateTwoRanges" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="d13e3e73-e065-6a13-5822-4e5f1b2d1751">
+      <Execution id="b4ac7eaf-0724-4e44-a3e4-a70260be2e79" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestSkippingMiddleCanCreateTwoRanges" />
+    </UnitTest>
+    <UnitTest name="TestWeirdOneOneRangeAndThenOtherRnageMadeWhenSelectingAllButSecondRevision" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="020fe87a-ab43-5b9e-ec0e-deaf1e36d47e">
+      <Execution id="c8ce162f-4876-43e9-b0ec-aa2b9b15e48f" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestWeirdOneOneRangeAndThenOtherRnageMadeWhenSelectingAllButSecondRevision" />
+    </UnitTest>
+    <UnitTest name="TestSvnProncessThrowsAnErrorWhenTheStandardErrorLogHasSomthingInIt" storage="c:\users\cwoo\desktop\svnlog\testsvndomainmodel\bin\debug\testsvndomainmodel.dll" id="b9c48b81-c181-0ea3-d9f9-8ae341a98518">
+      <Execution id="08e5ee6e-97c7-45a3-bb61-8f641a4a9774" />
+      <TestMethod codeBase="C:/Users/Cwoo/Desktop/SvnLog/TestSvnDomainModel/bin/Debug/TestSvnDomainModel.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestSvnDomainModel.TestSvnLog, TestSvnDomainModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestSvnProncessThrowsAnErrorWhenTheStandardErrorLogHasSomthingInIt" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="020fe87a-ab43-5b9e-ec0e-deaf1e36d47e" executionId="c8ce162f-4876-43e9-b0ec-aa2b9b15e48f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02aa3de2-b3c3-fefd-307e-ace23c0ad47e" executionId="d3a3f89f-a450-4503-ba2f-4ed736374306" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d9d8b1b-59be-4a84-e3f2-8936777bdcca" executionId="b3df8e62-1de8-4b0c-9261-0fd2d829a267" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1070a7ed-f447-faef-1a6b-12e76ff1dda1" executionId="f23e0cd6-9f83-42e3-825e-8fc9ffc753ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="24a2b6e2-c4e7-6b1d-ad11-cdd2dbc84edb" executionId="50c25169-c363-4b3d-b581-d75316715211" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3a48e302-ccc6-9204-2565-041adf457499" executionId="1ad2ab34-5894-4bfb-9c98-6855482f9296" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46370878-bbbc-0087-cd0a-9a2f9fd46cbc" executionId="83237099-aa80-4f47-a531-703febe97bc9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b9c48b81-c181-0ea3-d9f9-8ae341a98518" executionId="08e5ee6e-97c7-45a3-bb61-8f641a4a9774" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d13e3e73-e065-6a13-5822-4e5f1b2d1751" executionId="b4ac7eaf-0724-4e44-a3e4-a70260be2e79" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c8ce162f-4876-43e9-b0ec-aa2b9b15e48f" testId="020fe87a-ab43-5b9e-ec0e-deaf1e36d47e" testName="TestWeirdOneOneRangeAndThenOtherRnageMadeWhenSelectingAllButSecondRevision" computerName="CWOO-PC" duration="00:00:00.0134838" startTime="2011-04-30T22:33:40.2699534+01:00" endTime="2011-04-30T22:33:40.4571538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8ce162f-4876-43e9-b0ec-aa2b9b15e48f">
+    </UnitTestResult>
+    <UnitTestResult executionId="d3a3f89f-a450-4503-ba2f-4ed736374306" testId="02aa3de2-b3c3-fefd-307e-ace23c0ad47e" testName="TestSkippingARevisionResultsInTwoNoneRangesBeingReturned" computerName="CWOO-PC" duration="00:00:00.0003256" startTime="2011-04-30T22:33:40.4571538+01:00" endTime="2011-04-30T22:33:40.4571538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d3a3f89f-a450-4503-ba2f-4ed736374306">
+    </UnitTestResult>
+    <UnitTestResult executionId="b3df8e62-1de8-4b0c-9261-0fd2d829a267" testId="0d9d8b1b-59be-4a84-e3f2-8936777bdcca" testName="TestWhenOnlySingleRevisionSelectedItGetsTurnedIntoRevisionRange" computerName="CWOO-PC" duration="00:00:00.0002045" startTime="2011-04-30T22:33:40.4571538+01:00" endTime="2011-04-30T22:33:40.4571538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b3df8e62-1de8-4b0c-9261-0fd2d829a267">
+    </UnitTestResult>
+    <UnitTestResult executionId="f23e0cd6-9f83-42e3-825e-8fc9ffc753ce" testId="1070a7ed-f447-faef-1a6b-12e76ff1dda1" testName="TestRevisionsReturnedAsASingleRangeIfEveryRevisionIsSelected" computerName="CWOO-PC" duration="00:00:00.0002578" startTime="2011-04-30T22:33:40.4571538+01:00" endTime="2011-04-30T22:33:40.4571538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f23e0cd6-9f83-42e3-825e-8fc9ffc753ce">
+    </UnitTestResult>
+    <UnitTestResult executionId="50c25169-c363-4b3d-b581-d75316715211" testId="24a2b6e2-c4e7-6b1d-ad11-cdd2dbc84edb" testName="TestRangeCreatedWhenFirstRevisionSkipped" computerName="CWOO-PC" duration="00:00:00.0002651" startTime="2011-04-30T22:33:40.4727538+01:00" endTime="2011-04-30T22:33:40.4727538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50c25169-c363-4b3d-b581-d75316715211">
+    </UnitTestResult>
+    <UnitTestResult executionId="1ad2ab34-5894-4bfb-9c98-6855482f9296" testId="3a48e302-ccc6-9204-2565-041adf457499" testName="TestSkippingLastResultsInOneRange" computerName="CWOO-PC" duration="00:00:00.0002478" startTime="2011-04-30T22:33:40.4727538+01:00" endTime="2011-04-30T22:33:40.4727538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ad2ab34-5894-4bfb-9c98-6855482f9296">
+    </UnitTestResult>
+    <UnitTestResult executionId="83237099-aa80-4f47-a531-703febe97bc9" testId="46370878-bbbc-0087-cd0a-9a2f9fd46cbc" testName="TestNoStateIsSavedBetweenRevisionRangeCallsThatWouldCauseADifferentRangeToBeReturned" computerName="CWOO-PC" duration="00:00:00.0004045" startTime="2011-04-30T22:33:40.4727538+01:00" endTime="2011-04-30T22:33:40.4727538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="83237099-aa80-4f47-a531-703febe97bc9">
+    </UnitTestResult>
+    <UnitTestResult executionId="08e5ee6e-97c7-45a3-bb61-8f641a4a9774" testId="b9c48b81-c181-0ea3-d9f9-8ae341a98518" testName="TestSvnProncessThrowsAnErrorWhenTheStandardErrorLogHasSomthingInIt" computerName="CWOO-PC" duration="00:00:00.0229001" startTime="2011-04-30T22:33:40.4727538+01:00" endTime="2011-04-30T22:33:40.5039538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08e5ee6e-97c7-45a3-bb61-8f641a4a9774">
+    </UnitTestResult>
+    <UnitTestResult executionId="b4ac7eaf-0724-4e44-a3e4-a70260be2e79" testId="d13e3e73-e065-6a13-5822-4e5f1b2d1751" testName="TestSkippingMiddleCanCreateTwoRanges" computerName="CWOO-PC" duration="00:00:00.0003363" startTime="2011-04-30T22:33:40.5039538+01:00" endTime="2011-04-30T22:33:40.5039538+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4ac7eaf-0724-4e44-a3e4-a70260be2e79">
+    </UnitTestResult>
+  </Results>
+</TestRun>
