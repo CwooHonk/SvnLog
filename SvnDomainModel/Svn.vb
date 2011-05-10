@@ -222,8 +222,14 @@ Public Class Svn
 
         Using p = New SvnProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible" + UserNameAndPassword(), mSvnPath)
             Dim MergableRevisions = p.ExecuteCommand.Replace(Environment.NewLine, " ").Split(" ")
-            RevisionInfo = (From rev In MergableRevisions Select "-" + rev
-                                Take MergableRevisions.Count - 1).Aggregate(Function(revs, rev) revs + " " + rev)
+            Dim Revisions = MergableRevisions.Take(MergableRevisions.Count - 1)
+            Dim Revs = GetRevisionRange(Revisions, Revisions)
+
+            If Revs.Count = 1 Then
+                RevisionInfo = " -" + Revs(0)
+            Else
+                RevisionInfo = String.Join(" -", Revs)
+            End If
         End Using
 
         Using p = New SvnProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo, mSvnPath)
