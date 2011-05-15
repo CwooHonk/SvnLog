@@ -22,7 +22,7 @@
             <td id="Merge"><input type="checkbox" id = "<%= log.Revision %>" /></td>
             <td><%= log.Revision %></td>
             <td><%= log.Author %></td>
-            <td class="AutoSize"><%= log.Paths %></td>
+            <td class="AutoSize"><%= string.Join("<br />", log.AllPaths.OrderByDescending(a => a)) %></td>
             <td class="AutoSize"><%= log.Message %></td>
           </tr>
         </tbody>
