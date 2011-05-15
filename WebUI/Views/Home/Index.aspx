@@ -49,8 +49,8 @@
     <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults" }))
        { %>
 
-        <p>Trunck Path: <%= Html.TextBox("TrunckPath", ViewData["TrunckPath"], new { @class="TitleBar"})%></p>
-        <p>Branch Path: <%= Html.TextBox("BranchPath", ViewData["BranchPath"], new { @class="TitleBar" })%></p>
+        <p><%= Html.TextBox("TrunckPath", ViewData["TrunckPath"], new { @id="TitleBar", title="Trunk Path"})%></p>
+        <p><%= Html.TextBox("BranchPath", ViewData["BranchPath"], new { @id="TitleBar", title="Branch Path" })%></p>
         <input type="submit" value="Go" />
 
     <% } %>

@@ -147,9 +147,15 @@ page width. Or, you can specify an exact pixel width. */
     font-size: .9em;
 }
 
-input.TitleBar
+input#TitleBar
 {
-    width:92%;
+    width:100%;
+}
+
+.text-label 
+{
+    color: #cdcdcd;
+    font-weight: bold;
 }
 
 /* FORM LAYOUT ELEMENTS   
@@ -251,6 +257,7 @@ div#title
     font-weight: bold;
     color: #ff0000;
 }
+
 
 /* POPUP
 -----------------------------------------------------------*/
