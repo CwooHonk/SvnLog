@@ -7,12 +7,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     Before you can merge changes you need to provide valid <del>bank account details</del> SVN credentials:
-    <% using (Html.BeginForm())
-       { %>
-       <p>Svn User: </p> <%= Html.TextBox("SvnUser", Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName]) %>
-       <p>Svn Password: </p><%= Html.Password("SvnPassword", Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserPassword])%> 
-       <p><input type="submit" value="Assign Credentials" /></p>
-    <%} %>
+    <% 
+        var SvnUser = string.Empty;
+        var SvnPass = string.Empty;
+
+        if (Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName] != null)
+        {
+            SvnUser = Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName];
+            SvnPass = Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserPassword];
+        }
+            
+        using (Html.BeginForm())
+        { %>
+        <p>Svn User: </p> <%= Html.TextBox("SvnUser", SvnUser) %>
+        <p>Svn Password: </p><%= Html.Password("SvnPassword", SvnPass)%> 
+        <p><input type="submit" value="Assign Credentials" /></p>
+     <% } %>
     <br />
 
 </asp:Content>

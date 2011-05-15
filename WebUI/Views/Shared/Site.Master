@@ -19,7 +19,13 @@
                 <h1>Thats a big newt!</h1>
             </div>
 
-            SvnUser: <%= Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName]%>  <a href="/Svn/SetDetails">change</a>
+            <%
+                var SvnUser = string.Empty;
+                if (Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName] != null)
+                    SvnUser = Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName];    
+                 %>
+
+            SvnUser: <%= SvnUser %>  <a href="/Svn/SetDetails">change</a>
 
         </div>
 
