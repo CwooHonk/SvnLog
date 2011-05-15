@@ -111,7 +111,6 @@ page width. Or, you can specify an exact pixel width. */
 
 #header
 {
-
     margin-bottom: 0px;
     color: #000;
     padding: 0;
@@ -123,7 +122,7 @@ page width. Or, you can specify an exact pixel width. */
     padding: 5px 0;
     margin: 0;
     color: #fff;
-    border:p/Repro/Trunck none;
+    border: none;
     line-height: 2em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 32px !important;
@@ -157,6 +156,16 @@ input#TitleBar
     color: #cdcdcd;
     font-weight: bold;
 }
+
+div#svnuser
+{
+    text-align:right;
+    position:absolute;
+    right:5%;     
+    top:55px; /* Smelly :( */   
+}
+
+
 
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
@@ -235,12 +244,6 @@ table th
 	margin-top:0px;
 }
 
-div#title
-{
-    display:block;
-    text-align:left;
-}
-
 .field-validation-error
 {
     color: #ff0000;
@@ -257,7 +260,6 @@ div#title
     font-weight: bold;
     color: #ff0000;
 }
-
 
 /* POPUP
 -----------------------------------------------------------*/

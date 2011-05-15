@@ -13,12 +13,6 @@
 </head>
 
 <body>
-
-    <script type="text/javascript">
-        $(function () {
-            SetDefaultTextInputs();
-        });
-    </script>
       
     <div class="page">
 
@@ -27,13 +21,15 @@
                 <h1>Thats a big newt!</h1>
             </div>
 
+            <div id="svnuser">
             <%
                 var SvnUser = string.Empty;
                 if (Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName] != null)
                     SvnUser = Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName];    
                  %>
 
-            SvnUser: <%= SvnUser %>  <a href="/Svn/SetDetails">change</a>
+                SvnUser: <%= SvnUser %>  <a href="/Svn/SetDetails">change</a>
+            </div>
 
         </div>
 

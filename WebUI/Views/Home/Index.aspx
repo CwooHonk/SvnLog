@@ -7,6 +7,10 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 
 <script type="text/javascript">
+    $(function () {
+        SetDefaultTextInputs();
+    });
+
     function CheckAll() {
         var Checked = $("#SelectAll")[0].checked;
         $("#SvnResults tbody tr td#Merge input").each(function (index) {
