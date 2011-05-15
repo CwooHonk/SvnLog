@@ -4,7 +4,8 @@
 Public Class SvnProcess
     Implements IDisposable
 
-    Private mProcess As Process
+    Private WithEvents mProcess As Process
+    Private mErrors As New List(Of String)
 
     ''' <summary>
     ''' An exception assoiated to any svn errors.
@@ -35,6 +36,11 @@ Public Class SvnProcess
         End With
     End Sub
 
+
+    Private Sub mProcess_ErrorDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles mProcess.ErrorDataReceived
+        If Not String.IsNullOrEmpty(e.Data) Then mErrors.Add(e.Data)
+    End Sub
+
     ''' <summary>
     ''' Executes the command.
     ''' </summary>
@@ -42,44 +48,17 @@ Public Class SvnProcess
     ''' <remarks>Raise an SvnExcetion if somthing bad happens.</remarks>
     Public Function ExecuteCommand() As String
         mProcess.Start()
+        mProcess.StandardInput.Close()
+        mProcess.BeginErrorReadLine()
+        Dim output = mProcess.StandardOutput.ReadToEnd
 
-        'Conflicts ask for user input so dont read whole buuffer.
-        Dim Errors = New List(Of String)
-        Dim ErrorLine = mProcess.StandardError.ReadLine
-        If ErrorLine <> String.Empty Then Errors.Add(ErrorLine)
+        mProcess.WaitForExit()
 
-        If MoreErrorsToRead() Then
-            While (ErrorLine = mProcess.StandardError.ReadLine) <> String.Empty
-                Errors.Add(ErrorLine)
-            End While
+        If mErrors.Count > 0 Then
+            Throw New SvnException() With {.SvnError = mErrors, .Command = mProcess.StartInfo.Arguments}
         End If
 
-        If Errors.Count > 0 Then
-            Throw New SvnException() With {.SvnError = Errors, .Command = mProcess.StartInfo.Arguments}
-        End If
-
-        Dim Output = mProcess.StandardOutput.ReadToEnd
-
-        Dim [Error] = mProcess.StandardError.ReadToEnd 'Might still happen if completly invalid command
-        If [Error] <> String.Empty Then
-            Errors.Add([Error])
-            Throw New SvnException() With {.SvnError = Errors, .Command = mProcess.StartInfo.Arguments}
-        End If
-
-        Return Output
-    End Function
-
-
-    Private Function MoreErrorsToRead()
-        Try
-            If mProcess.HasExited Then Return False
-
-            'Conflicts wait for user input, invalid merge commands do not
-            Return Not mProcess.Responding
-        Catch ex As InvalidOperationException
-            'The process may close between the .HasExited and .Responding calls
-            Return False
-        End Try
+        Return output
     End Function
 
 

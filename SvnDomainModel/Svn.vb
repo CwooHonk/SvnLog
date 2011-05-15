@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 
 ''' <summary>
 ''' A class to query svn.
@@ -126,21 +127,6 @@ Public Class Svn
         Return Logs
     End Function
 
-    ''' <summary>
-    ''' Gets the location on the harddrive of a repository.
-    ''' </summary>
-    Public Function GetBranchLocation() As String
-        Dim Location = String.Empty
-
-        Using p = New SvnProcess("info " + mBranchPath + " --xml", mSvnPath)
-            Dim BranchXml = XElement.Parse(p.ExecuteCommand)
-            Dim Reprository = BranchXml.Elements.First.Elements.Where(Function(node) node.Name = "repository").FirstOrDefault
-            Location = Reprository.Elements.Where(Function(node) node.Name = "root").FirstOrDefault.Value
-        End Using
-
-        Return Location
-    End Function
-
 
     Public Sub MergeChanges(ByVal svnDetails As SvnDetails, ByVal SelectedRevisions As IEnumerable(Of String))
         Dim CheckOutFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetRandomFileName)
@@ -164,7 +150,7 @@ Public Class Svn
     ''' <param name="svnDetails">The object you are removing revision info from.</param>
     Private Sub RemoveMergedRevisionsFromDetails(ByVal svnDetails As SvnDetails)
         Dim RevisionsToRemove = New List(Of Svn.LogEntry)
-        For Each Revision In SvnDetails.Changes
+        For Each Revision In svnDetails.Changes
             If Revision.Merge Then
                 RevisionsToRemove.Add(Revision)
             End If
@@ -205,8 +191,6 @@ Public Class Svn
     End Sub
 
     Private Sub CheckOut(ByVal branchPath As String, ByVal checkOutFolder As String)
-        'TODO: This will need testing, is this giving the correct hosting path?
-        'Also, how to log errors if its not?
         Using p = New SvnProcess("checkout " + branchPath + " " + checkOutFolder + UserNameAndPassword(), mSvnPath)
             p.ExecuteCommand()
         End Using
@@ -219,24 +203,45 @@ Public Class Svn
     Private Function GetSvnLogOutput() As XElement
         Dim Output As XElement
         Dim RevisionInfo As String
+        Dim Revisions As IEnumerable(Of String)
 
         Using p = New SvnProcess("mergeinfo " + mTrunckPath + " " + mBranchPath + " --show-revs eligible" + UserNameAndPassword(), mSvnPath)
             Dim MergableRevisions = p.ExecuteCommand.Replace(Environment.NewLine, " ").Split(" ")
-            Dim Revisions = MergableRevisions.Take(MergableRevisions.Count - 1)
-            Dim Revs = GetRevisionRange(Revisions, Revisions)
+            Revisions = MergableRevisions.Take(MergableRevisions.Count - 1)
+            Dim FirstRev = Regex.Split(Revisions.First, "r").LastOrDefault
+            Dim LastRev = Regex.Split(Revisions.Last, "r").LastOrDefault
 
-            If Revs.Count = 1 Then
-                RevisionInfo = " -" + Revs(0)
-            Else
-                RevisionInfo = String.Join(" -", Revs)
-            End If
+            'Merge info is always returning the first revisions and its impossible to merge it?
+            If FirstRev = "1" Then FirstRev = Regex.Split(Revisions.Skip(1).FirstOrDefault, "r").LastOrDefault
+
+            RevisionInfo = String.Format(" -r{0}:{1}", FirstRev, LastRev)
         End Using
 
         Using p = New SvnProcess("log " + mTrunckPath + " -v --xml " + RevisionInfo, mSvnPath)
             Output = XElement.Parse(p.ExecuteCommand)
         End Using
 
-        Return Output
+        Return RemoveLogEntrysThatAreNotMerged(Output, Revisions)
+    End Function
+
+    ''' <summary>
+    ''' One revisions range is used to return revisions to merge (there may be lots of revisions, too many to fit on the command line).
+    ''' The revisions range may bring back revisions that have already been merged. This function removes those revisions.
+    ''' </summary>
+    Private Function RemoveLogEntrysThatAreNotMerged(ByVal output As XElement, ByVal mergeRevisions As IEnumerable(Of String))
+        Dim LogEntrysToDelete As New List(Of XElement)
+        Dim RevLookUp = mergeRevisions.Select(Function(rev) Regex.Split(rev, "r").LastOrDefault).ToLookup(Function(a) a)
+        For Each element In output.Elements
+            If Not RevLookUp.Contains(CInt(element.Attribute("revision"))) Then
+                LogEntrysToDelete.Add(element)
+            End If
+        Next
+
+        For EntryIndex = 0 To LogEntrysToDelete.Count - 1
+            LogEntrysToDelete(EntryIndex).Remove()
+        Next
+
+        Return output
     End Function
 
     Private Function UserNameAndPassword() As String
