@@ -17,6 +17,12 @@ namespace WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.Add(new Route(
+                "{controller}.mvc/{action}/{id}",
+                new RouteValueDictionary(new { action = "Index", id = (string)null }),
+                new MvcRouteHandler()
+                )); // Route for IS 5.1
+
             routes.MapRoute(
                 "Default",                                              // Route name
                 "{controller}/{action}/{id}",                           // URL with parameters
