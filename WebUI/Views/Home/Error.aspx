@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <img src="../../Content/ErrorCroc.gif" alt="Scum bag ErrorCroc!"/>
+    <img src="<%= Url.Content("~/Content/ErrorCroc.gif") %>" alt="Scum bag ErrorCroc!"/>
 
     <% if (!ViewData.ContainsKey("ErrorMessage"))
        { %>
