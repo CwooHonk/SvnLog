@@ -290,17 +290,6 @@ table th
     font-size:13px;  
 }  
 
-#popupContact h1
-{  
-    text-align:left;  
-    color:#6FA5FD;  
-    font-size:22px;  
-    font-weight:700;  
-    border-bottom:1px dotted #D3D3D3;  
-    padding-bottom:2px;  
-    margin-bottom:20px;  
-}  
-
 #popupContactClose
 {  
     font-size:14px;  
@@ -312,3 +301,14 @@ table th
     font-weight:700;  
     display:block;  
 }  
+
+div#LoadingTitle
+{
+    text-align:left;  
+    color:#6FA5FD;  
+    font-size:22px;  
+    font-weight:700;  
+    border-bottom:1px dotted #D3D3D3;  
+    padding-bottom:2px;  
+    margin-bottom:20px;     
+}

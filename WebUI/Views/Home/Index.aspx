@@ -26,9 +26,17 @@
         $("#SelectedRevisions").attr("value", Revisions.join(","));
     }
 
-    function ShowLoadingWindow() {
+    function ShowLoadingWindow(MessageTitle, MessageText) {
+        SetLoadingWindowImageAndText(MessageTitle, MessageText);
         centerPopup();
         loadPopup();
+    }
+
+    function SetLoadingWindowImageAndText(MessageTitle, MessageText){
+        var ImageNumber = Math.floor(Math.random()*6);
+        $("img#LoadingImage").attr("src", "<%= Url.Content("~/Content/LoadingImages/") %>" + ImageNumber + ".png");
+        $("div#LoadingTitle").text(MessageTitle);
+        $("div#LoadingText").text(MessageText);
     }
 
     function CloseLoadingWindow() {
@@ -49,8 +57,22 @@
         }).remove()
     }
 </script> 
+    
+    
+    <div id="popupContact">  
+        <div id="LoadingTitle">
+            Loading
+        </div>
+        <p />
+        <img id="LoadingImage" src="<%= Url.Content("~/Content/LoadingImages/") %>1.png" alt="Loading Image"/>
+        <br />
+        <div id="LoadingText">
+            Loading!
+        </div>
+    </div> 
+    <div id="backgroundPopup"></div> 
 
-    <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults" }))
+    <% using (Ajax.BeginForm("GetSvnLog", new AjaxOptions { UpdateTargetId = "SvnLogResults", OnBegin = "function(){ShowLoadingWindow('Checking for changes', 'Wait there while I go and look for some changes.')}", OnSuccess = "CloseLoadingWindow" }))
        { %>
 
         <p><%= Html.TextBox("TrunckPath", ViewData["TrunckPath"], new { @id="TitleBar", title="Trunk Path"})%></p>

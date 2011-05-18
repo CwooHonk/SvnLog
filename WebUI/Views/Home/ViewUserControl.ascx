@@ -29,7 +29,7 @@
      <% } %>
 </table>
 
-<% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "ValidationSummary", OnBegin = "ShowLoadingWindow", OnSuccess = "CloseLoadingWindow" }))
+<% using (Ajax.BeginForm("MergeSvnFiles", new AjaxOptions { UpdateTargetId = "ValidationSummary", OnBegin = "function(){ShowLoadingWindow('Merging Changes', 'The whole repro has to be checked out before the merge can be performed. This might take a little while!')}", OnSuccess = "CloseLoadingWindow" }))
    { %>
 
     <input id="MergeSubmit" type="submit" value="Merge" onclick="SetSelectedRevisions()" />

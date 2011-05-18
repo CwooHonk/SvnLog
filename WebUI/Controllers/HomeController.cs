@@ -78,24 +78,7 @@ namespace WebUI.Controllers
             foreach (var Change in AllChanges)
                 svnDetails.Changes.Add(Change);
 
-            SetLoadingImage();
-
             return PartialView("ViewUserControl", svnDetails);
-        }
-
-
-        private void SetLoadingImage()
-        {
-            var images = new List<string>();
-            foreach(var iamge in Directory.GetFiles(Server.MapPath(@"~\Content\LoadingImages")))
-            {
-                var imageFile = new FileInfo(iamge);
-                images.Add(imageFile.Name);
-            }
-
-            var rand = new Random();
-            var randNumber = rand.Next(0, images.Count()-1);
-            ViewData["LoadingImage"] = "/Content/LoadingImages/" + images[randNumber];
         }
 
         [HttpPost]
@@ -114,9 +97,6 @@ namespace WebUI.Controllers
                     ModelState.AddModelError("", error);
                 ModelState.AddModelError("", ex.Command);
             }
-
-            //Set the image so another one is shown if merge some other files.
-            SetLoadingImage();
 
             return PartialView("ValidationSummary");
         }
