@@ -32,7 +32,7 @@ namespace WebUI.Controllers
             var requestSvnCookie = Request.Cookies[SvnDetails.SvnCookieName];
             if (requestSvnCookie == null || svnDetails.SvnUser == string.Empty)
             {
-                Response.Redirect(@"Svn\SetDetails");
+                Response.Redirect(Url.Action("SetDetails", "Svn"));
             }
             else
             {

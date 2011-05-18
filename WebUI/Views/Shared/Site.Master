@@ -28,7 +28,7 @@
                     SvnUser = Request.Cookies[SvnDomainModel.SvnDetails.SvnCookieName][SvnDomainModel.SvnDetails.SvnCookieUserName];    
                  %>
 
-                SvnUser: <%= SvnUser %>  <a href="/Svn/SetDetails">change</a>
+                SvnUser: <%= SvnUser %>  <a href="<%= Url.Action("SetDetails", "Svn") %>">change</a>
             </div>
 
         </div>
